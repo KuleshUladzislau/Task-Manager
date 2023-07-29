@@ -35,9 +35,9 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
         pages,
         page,
         pageSize,
-        isLoading,
         filter,
         currentTask,
+        isFetching,
         setCurrentTask,
         changePageHandler,
         setAll,
@@ -79,10 +79,10 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
             </ButtonContainer>
             {filter === 'all' && <Pages pageSize={pageSize} allPage={pages} currentPage={page}/>}
             <TaskContainer>
-                {filter === 'all' && page > 1 && <ArrowStyleLeft onClick={(e: any) => changePageHandler(page - 1, e)}/>}
-                {isLoading ? <p>...loadind</p> : filteredTasks}
+                {filter === 'all' && page > 1 && <ArrowStyleLeft onClick={() => changePageHandler(page - 1)}/>}
+                {isFetching ? <p>...loadind</p> : filteredTasks}
                 {filter === 'all' && page < pages &&
-                    <ArrowStyleRight onClick={(e: any) => changePageHandler(page + 1, e)}/>}
+                    <ArrowStyleRight onClick={() => changePageHandler(page + 1)}/>}
             </TaskContainer>
             <Modal title={'Create Task'} active={activeModal} setActive={setActiveModal}>
                 <AddInputForm onClick={addTaskHandler}/>

@@ -47,11 +47,7 @@ export const todosApi = createApi({
             query: ({todoId,pageSize=5,page}) => ({
                 url: `todo-lists/${todoId}/tasks?count=${pageSize}&page=${page}`,
                 method: 'GET',
-                params:{
-                    _page : page,
-                    _count:pageSize
-                }
-
+                keepUnusedData:true,
             }),
             providesTags: ['Todos']
 
@@ -127,9 +123,6 @@ export const todosApi = createApi({
                 data: {email, password, rememberMe, captcha}
             }),
             invalidatesTags: ['User', 'Todos'],
-
-
-
         }),
 
         logout: build.mutation<ResponseType<Me>, void>({
@@ -139,7 +132,6 @@ export const todosApi = createApi({
 
             }),
             invalidatesTags: ['User'],
-
         }),
 
         getCaptcha: build.query<{ url: string }, void>({
@@ -165,7 +157,7 @@ export const {
     useUpdateTaskMutation,
     useLoginMutation,
     useLogoutMutation,
-    useMeQuery,
+    useMeQuery  ,
     useGetCaptchaQuery,
     useChangePageTasksQuery,
     useReorderTaskMutation

@@ -27,7 +27,8 @@ const paginatorSlice = createSlice({
         },
         resetTaskPageSetting(state){
             state.page = 1
-        }
+        },
+
     }
 })
 
