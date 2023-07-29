@@ -71,7 +71,6 @@ const InputAddForm = styled.input`
   border: none;
   border-bottom: 2px solid palevioletred;
   outline: none;
-  font-size: 14px;
   font-size: 20px;
   color: white;
 

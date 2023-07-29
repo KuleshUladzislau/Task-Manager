@@ -20,6 +20,7 @@ export type TaskPropsType = {
     addedDate: string,
     currentTask:string,
     setCurrentTask:(id:string)=>void
+    isFetching:boolean
 }
 
 export const Task = React.memo((props: TaskPropsType) => {
@@ -32,6 +33,7 @@ export const Task = React.memo((props: TaskPropsType) => {
         description,
         priority,
         startDate,
+        isFetching,
         setCurrentTask,
         currentTask
     } = props
@@ -70,7 +72,7 @@ export const Task = React.memo((props: TaskPropsType) => {
     let removeTaskHandler = () => {
         removeTask({todoListId, taskId: id})
     }
-
+    console.log(isFetching)
     return (
         <TaskStyle border={activeTaskStyle}
                    onDragStart={(e: DragEvent<HTMLDivElement>) => dragStarHandler(e, {...props})}
@@ -89,7 +91,7 @@ export const Task = React.memo((props: TaskPropsType) => {
             <TaskTitle>
                 <EditableSpan title={title} onChange={changeTaskTitle}/>
             </TaskTitle>
-            <ButtonCompleted onClick={changeTaskStatus}>Completed</ButtonCompleted>
+            <ButtonCompleted disabled={isFetching} onClick={changeTaskStatus}>Completed</ButtonCompleted>
         </TaskStyle>
     );
 })
@@ -136,10 +138,16 @@ const ButtonCompleted = styled.button`
   background: transparent;
   text-transform: uppercase;
   border: none;
-  padding: 5px;
-  background: linear-gradient(to right, rgba(255, 165, 0, 0.55), #FF69B4);
-  border-radius: 10px;
+  padding: 10px;
+  background: linear-gradient(to right, rgba(255, 165, 0, 1), #FF69B4);
+  border-radius: 25px;
   color: white;
   margin: 20px;
+  &:hover {
+    background: linear-gradient(to right, rgba(255, 165, 0, 0.5), #FF69B4);
+  }
+  &:disabled{
+    background: linear-gradient(to right, rgba(255, 165, 0, 0), #FF69B4);
+  }
 `
 

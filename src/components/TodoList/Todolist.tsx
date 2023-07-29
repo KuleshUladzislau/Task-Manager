@@ -8,7 +8,7 @@ import {useTasks} from "../Task/hook/useTasks";
 import {Task} from "../Task/Task";
 import {Pages} from "../common/Paginator/Pages";
 import todoDeleteIcon from '../../assets/img/delete icon/TodosDelete/cross.png'
-
+import {Preloader} from "../common/Preloader/Preloader";
 
 
 export type TodolistPropsType = {
@@ -61,6 +61,7 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
             addedDate={el.addedDate}
             currentTask={currentTask}
             setCurrentTask={setCurrentTask}
+            isFetching={isFetching}
         />
     )
 
@@ -77,13 +78,14 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
                 <FilterButton color={filter === 'active' ? 'orange' : 'white'} onClick={setActive}>active</FilterButton>
                 <FilterButton color={filter === 'done' ? 'orange' : 'white'} onClick={setDone}>completed</FilterButton>
             </ButtonContainer>
-            {filter === 'all' && <Pages pageSize={pageSize} allPage={pages} currentPage={page}/>}
             <TaskContainer>
                 {filter === 'all' && page > 1 && <ArrowStyleLeft onClick={() => changePageHandler(page - 1)}/>}
-                {isFetching ? <p>...loadind</p> : filteredTasks}
+                {/*{isFetching ? <PreloaderTodosStyle><Preloader/></PreloaderTodosStyle> : filteredTasks}*/}
+                {filteredTasks}
                 {filter === 'all' && page < pages &&
                     <ArrowStyleRight onClick={() => changePageHandler(page + 1)}/>}
             </TaskContainer>
+            {filter === 'all' && <Pages pageSize={pageSize} allPage={pages} currentPage={page}/>}
             <Modal title={'Create Task'} active={activeModal} setActive={setActiveModal}>
                 <AddInputForm onClick={addTaskHandler}/>
             </Modal>
@@ -128,8 +130,7 @@ const TaskContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 100px;
-
+  margin-top: 50px;
 `
 
 const TodolistContainer = styled.div`
@@ -185,4 +186,13 @@ const ButtonCreateTask = styled.div`
   font-weight: 600;
   font-size: 20px;
   margin-left: 40px;
+`
+
+const PreloaderTodosStyle = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+
 `

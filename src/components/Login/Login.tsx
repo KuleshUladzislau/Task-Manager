@@ -42,9 +42,7 @@ export const Login = () => {
         let {email, password, rememberMe, captcha} = values
         login({email, password, rememberMe, captcha})
     }
-    if(isLoading){
-        return <Preloader/>
-    }
+
 
     return (
         <Formik
