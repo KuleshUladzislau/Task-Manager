@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {useState} from 'react';
 import {EditableSpan} from "../common/EditableSpan/EditableSpan";
 import {useTodoList} from "./hook/useTodoList";
 import styled from "styled-components";
@@ -8,8 +8,7 @@ import {useTasks} from "../Task/hook/useTasks";
 import {Task} from "../Task/Task";
 import {Pages} from "../common/Paginator/Pages";
 import todoDeleteIcon from '../../assets/img/delete icon/TodosDelete/cross.png'
-import {Preloader} from "../common/Preloader/Preloader";
-import {WithLoaderTest} from "../../withLoaderTest";
+
 
 
 export type TodolistPropsType = {
@@ -20,6 +19,7 @@ export type TodolistPropsType = {
 export const Todolist = React.memo((props: TodolistPropsType) => {
     const {title, id} = props
     const [activeModal, setActiveModal] = useState(false)
+
 
     const createTaskHandler = () => setActiveModal(true)
 
@@ -37,6 +37,8 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
         pageSize,
         isLoading,
         filter,
+        currentTask,
+        setCurrentTask,
         changePageHandler,
         setAll,
         setActive,
@@ -57,22 +59,23 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
             todoListId={el.todoListId}
             order={el.order}
             addedDate={el.addedDate}
+            currentTask={currentTask}
+            setCurrentTask={setCurrentTask}
         />
     )
 
-    console.log(filteredTasks?.length !== 0)
 
     return (
         <TodolistContainer>
             <TitleContainer>
-                <TodoTitle>Todo:<EditableSpan title={title} onChange={changeTodoTitle}/></TodoTitle>
+                <TodoTitle><EditableSpan title={title} onChange={changeTodoTitle}/></TodoTitle>
                 <img src={todoDeleteIcon} alt="" onClick={removeTodoHandler}/>
             </TitleContainer>
             <ButtonCreateTask onClick={createTaskHandler}>Add Task</ButtonCreateTask>
             <ButtonContainer>
-                <FilterButton onClick={setAll}>all</FilterButton>
-                <FilterButton onClick={setActive}>active</FilterButton>
-                <FilterButton onClick={setDone}>completed</FilterButton>
+                <FilterButton color={filter === 'all' ? 'orange' : 'white'} onClick={setAll}>all</FilterButton>
+                <FilterButton color={filter === 'active' ? 'orange' : 'white'} onClick={setActive}>active</FilterButton>
+                <FilterButton color={filter === 'done' ? 'orange' : 'white'} onClick={setDone}>completed</FilterButton>
             </ButtonContainer>
             {filter === 'all' && <Pages pageSize={pageSize} allPage={pages} currentPage={page}/>}
             <TaskContainer>
@@ -106,11 +109,11 @@ const FilterButton = styled.button`
   background: transparent;
   text-transform: uppercase;
   font-size: 20px;
-  color: white;
+  color: ${props => props.color};
   margin-top: 20px;
 
   &:hover {
-    color: rgba(0, 0, 0, 0.5);
+    color: orange;
   }
 `
 

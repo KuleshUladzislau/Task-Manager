@@ -1,5 +1,5 @@
-import React, {ChangeEvent, useEffect, useState} from "react";
-import {useChangePageTasksQuery, useGetTasksQuery} from "../../../Dall/api";
+import {useEffect, useState} from "react";
+import {useGetTasksQuery} from "../../../Dall/api";
 import {TaskTypeAPI} from "../../../Dall/apiTypes";
 import {useAppDispatch, useAppSelector} from "../../hook/hooks";
 import {changePage, setPageSettings} from "../../../redux/Slices/paginatorSlice";
@@ -14,15 +14,14 @@ export const useTasks = (todoId: string) => {
     const dispatch = useAppDispatch()
 
     const {page, pageSize, totalCount} = useAppSelector(state => state.pageSettings)
-    const {data,isLoading} = useGetTasksQuery({todoId, pageSize, page})
-
+    const {data, isLoading} = useGetTasksQuery({todoId, pageSize, page})
+    const [currentTask, setCurrentTask] = useState<string>('')
 
     const tasks = data && data.items
     const getTotalCount = data ? data.totalCount : 5
     const pages = getTotalCount && Math.ceil(getTotalCount / pageSize)
 
-    const changePageHandler = (page: number,e:any) => {
-
+    const changePageHandler = (page: number) => {
         dispatch(changePage({page, pageSize}))
     }
 
@@ -31,8 +30,7 @@ export const useTasks = (todoId: string) => {
         if (getTotalCount) {
             dispatch(setPageSettings({page, pageSize, totalCount: getTotalCount}))
         }
-    }, [data])
-
+    }, [data,dispatch])
 
 
     const [filter, setFilter] = useState<FilterType>('all')
@@ -64,6 +62,8 @@ export const useTasks = (todoId: string) => {
         pages,
         isLoading,
         filter,
+        currentTask,
+        setCurrentTask,
         changePageHandler,
         setAll,
         setActive,

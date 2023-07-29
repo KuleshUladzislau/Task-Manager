@@ -1,5 +1,5 @@
-import { createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import {GetTodo, Me, ResponseTaskType, ResponseType, ResultCode, TaskChange} from "./apiTypes";
+import { createApi} from '@reduxjs/toolkit/query/react'
+import {GetTodo, Me, ResponseTaskType, ResponseType, TaskChange} from "./apiTypes";
 import {axiosBaseQuery} from "./apiBaseQuery";
 
 
@@ -97,6 +97,14 @@ export const todosApi = createApi({
             }),
             invalidatesTags: ['Todos']
         }),
+        reorderTask:build.mutation<ResponseType,{todoListId:string,taskId:string,putAfterItemId:string}>({
+            query:({todoListId,taskId,putAfterItemId})=>({
+                url:`todo-lists/${todoListId}/tasks/${taskId}/reorder`,
+                method:'PUT',
+                data:{putAfterItemId}
+            }),
+            invalidatesTags:['Todos']
+        }),
 
         me: build.query<ResponseType<Me>, void>({
             query: () => ({
@@ -159,7 +167,8 @@ export const {
     useLogoutMutation,
     useMeQuery,
     useGetCaptchaQuery,
-    useChangePageTasksQuery
+    useChangePageTasksQuery,
+    useReorderTaskMutation
 } = todosApi
 
 

@@ -1,11 +1,11 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {useState} from 'react';
 import {NavLink} from "react-router-dom";
 import styled from "styled-components";
 import {AddInputForm} from "../common/AddInputForm/AddInputForm";
 import {Modal} from "../common/Modal/Modal";
 import {useCreateTodoMutation} from "../../Dall/api";
 import {useAppDispatch} from "../hook/hooks";
-import {resetTaskPageSetting, setPageSettings} from "../../redux/Slices/paginatorSlice";
+import {resetTaskPageSetting} from "../../redux/Slices/paginatorSlice";
 
 
 type TodolistType = {
@@ -22,7 +22,7 @@ export const SideBar = ({todos}: SideBarPropsType) => {
     const dispatch = useAppDispatch()
     const [activeModal, setActiveModal] = useState(false)
     const [createTodo] = useCreateTodoMutation()
-    const linkOnclickHandler = (event:any) =>{
+    const linkOnclickHandler = () =>{
         dispatch(resetTaskPageSetting())
     }
 
@@ -57,7 +57,7 @@ export const SideBar = ({todos}: SideBarPropsType) => {
         <SideBarContainer>
             <SideBarTitleContainer>
                 <Title>MY TODOS</Title>
-                <button onClick={onClilHandlerCreateTodo}>create Todo</button>
+                <AddTodoButtonStyle onClick={onClilHandlerCreateTodo}>+</AddTodoButtonStyle>
             </SideBarTitleContainer>
             <LinkList>
                 {linkTodos}
@@ -96,8 +96,10 @@ const LinkList = styled.ul`
   list-style-type: none;
 `
 
-const LiStyle = styled.li`
-  text-decoration: none;
+const AddTodoButtonStyle = styled.button`
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 50%;
   color: white;
-
+  font-size: 20px;
 `

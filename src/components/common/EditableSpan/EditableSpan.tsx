@@ -1,4 +1,5 @@
 import React, {ChangeEvent, useState} from 'react';
+import styled from "styled-components";
 
 
 
@@ -30,7 +31,29 @@ export const EditableSpan = React.memo((props:EditableSpanPropsType) => {
 
 
     return editeMode
-        ? <input type="text" value={text} onChange={onChangeHandler} onBlur={onBlurHandler} autoFocus/>
-        : <span onDoubleClick={onDoubleClickHandler}>{title}</span>
+        ? <InputAddForm type="text" value={text} onChange={onChangeHandler} onBlur={onBlurHandler} autoFocus/>
+        : <SpanStyle onDoubleClick={onDoubleClickHandler}>{title}</SpanStyle>
 })
+
+const SpanStyle = styled.span`
+    cursor: pointer;
+`
+
+const InputAddForm = styled.input`
+  padding: 5px;
+  border: none;
+  border-bottom: 2px solid orange;
+  outline: none;
+  font-size: 20px;
+  color: white;
+
+  &:not(:focus) {
+    background-color: transparent;
+  }
+  &:focus {
+    background-color: transparent;
+  }
+`
+
+
 

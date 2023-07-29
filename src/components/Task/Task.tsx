@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {DragEvent} from 'react';
 import {EditableSpan} from "../common/EditableSpan/EditableSpan";
 import deleteIcon from '../../assets/img/delete icon/TaskDelete/deleted.png'
 import styled from "styled-components";
-import {useRemoveTaskMutation, useUpdateTaskMutation} from "../../Dall/api";
+import {useRemoveTaskMutation, useReorderTaskMutation, useUpdateTaskMutation} from "../../Dall/api";
 import {Status} from "./hook/useTasks";
+
 
 
 export type TaskPropsType = {
@@ -16,9 +17,9 @@ export type TaskPropsType = {
     id: string
     todoListId: string
     order: number
-    addedDate: string
-
-
+    addedDate: string,
+    currentTask:string,
+    setCurrentTask:(id:string)=>void
 }
 
 export const Task = React.memo((props: TaskPropsType) => {
@@ -31,18 +32,39 @@ export const Task = React.memo((props: TaskPropsType) => {
         description,
         priority,
         startDate,
+        setCurrentTask,
+        currentTask
     } = props
 
     const activeTaskStyle = status === 1 ? '1px solid greenyellow' : ''
-
+    const [reorderTask] = useReorderTaskMutation()
     const [removeTask] = useRemoveTaskMutation()
     const [updateTask] = useUpdateTaskMutation()
     const changeTaskTitle = (title: string) => {
-        updateTask({todoListId, taskId: id, item: {...props, title}})
+        let newPost = {status, todoListId, deadline,
+            description, priority, startDate,}
+        updateTask({todoListId, taskId: id, item: {...newPost, title}})
     }
     const changeTaskStatus = () => {
         let newStatus = status === Status.Completed ? Status.New : Status.Completed
         updateTask({todoListId, taskId: id, item: {...props, status: newStatus}})
+    }
+
+    const dragStarHandler = (e: DragEvent<HTMLDivElement>, el:TaskPropsType) => {
+        setCurrentTask(el.id)
+    }
+
+    const dragLeaveHandler = (e: DragEvent<HTMLDivElement>) => {
+        e.preventDefault()
+    }
+    const dragEndHandler = (e: DragEvent<HTMLDivElement>) => {
+        e.preventDefault()
+    }
+    const dragOverHandler = (e: DragEvent<HTMLDivElement>) => {
+        e.preventDefault()
+    }
+    const onDropHandler = (e: DragEvent<HTMLDivElement>, el:TaskPropsType) => {
+        reorderTask({todoListId,taskId:currentTask,putAfterItemId:el.id})
     }
 
     let removeTaskHandler = () => {
@@ -50,7 +72,14 @@ export const Task = React.memo((props: TaskPropsType) => {
     }
 
     return (
-        <TaskStyle border={activeTaskStyle}>
+        <TaskStyle border={activeTaskStyle}
+                   onDragStart={(e: DragEvent<HTMLDivElement>) => dragStarHandler(e, {...props})}
+                   onDragLeave={(e: DragEvent<HTMLDivElement>) => dragLeaveHandler(e)}
+                   onDragEnd={(e: DragEvent<HTMLDivElement>) => dragEndHandler(e)}
+                   onDragOver={(e: DragEvent<HTMLDivElement>) => dragOverHandler(e)}
+                   onDrop={(e: DragEvent<HTMLDivElement>) => onDropHandler(e, {...props})}
+                   draggable={true}
+        >
             <ButtonWrapper>
                 <Button onClick={removeTaskHandler}>
                     <img src={deleteIcon} alt="x"/>
