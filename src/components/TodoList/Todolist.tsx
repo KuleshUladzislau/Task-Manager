@@ -17,7 +17,7 @@ export type TodolistPropsType = {
     id: string
 }
 
-export const Todolist =  React.memo((props: TodolistPropsType) => {
+export const Todolist = React.memo((props: TodolistPropsType) => {
     const {title, id} = props
     const [activeModal, setActiveModal] = useState(false)
 
@@ -36,6 +36,7 @@ export const Todolist =  React.memo((props: TodolistPropsType) => {
         page,
         pageSize,
         isLoading,
+        filter,
         changePageHandler,
         setAll,
         setActive,
@@ -59,6 +60,7 @@ export const Todolist =  React.memo((props: TodolistPropsType) => {
         />
     )
 
+    console.log(filteredTasks?.length !== 0)
 
     return (
         <TodolistContainer>
@@ -72,11 +74,12 @@ export const Todolist =  React.memo((props: TodolistPropsType) => {
                 <FilterButton onClick={setActive}>active</FilterButton>
                 <FilterButton onClick={setDone}>completed</FilterButton>
             </ButtonContainer>
-            <Pages  pageSize={pageSize} allPage={pages} currentPage={page}/>
+            {filter === 'all' && <Pages pageSize={pageSize} allPage={pages} currentPage={page}/>}
             <TaskContainer>
-                {page > 1 && <ArrowStyleLeft onClick={(e:any) => changePageHandler(page - 1,e)}/>}
+                {filter === 'all' && page > 1 && <ArrowStyleLeft onClick={(e: any) => changePageHandler(page - 1, e)}/>}
                 {isLoading ? <p>...loadind</p> : filteredTasks}
-                {page < pages && <ArrowStyleRight onClick={(e:any) => changePageHandler(page + 1,e)}/>}
+                {filter === 'all' && page < pages &&
+                    <ArrowStyleRight onClick={(e: any) => changePageHandler(page + 1, e)}/>}
             </TaskContainer>
             <Modal title={'Create Task'} active={activeModal} setActive={setActiveModal}>
                 <AddInputForm onClick={addTaskHandler}/>

@@ -63,6 +63,7 @@ export const useTasks = (todoId: string) => {
         pageSize,
         pages,
         isLoading,
+        filter,
         changePageHandler,
         setAll,
         setActive,
