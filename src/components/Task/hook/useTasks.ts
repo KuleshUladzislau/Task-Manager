@@ -16,6 +16,9 @@ export const useTasks = (todoId: string) => {
 
     const dispatch = useAppDispatch()
     const [timerId, setTimerId] = useState<number>()
+    const [currentTask, setCurrentTask] = useState<string>('')
+    const [viewTasks, setViewTask] = useState(false)
+
     const {
         page,
         pageSize,
@@ -32,20 +35,6 @@ export const useTasks = (todoId: string) => {
         pageSize
     })
 
-    const [
-        currentTask,
-        setCurrentTask
-    ] = useState<string>('')
-    const [
-        viewTasks,
-        setViewTask
-    ] = useState(false)
-
-    const tasks = data && data.items
-    const getTotalCount = data ? data.totalCount : 5
-    const pages = getTotalCount && Math.ceil(getTotalCount / pageSize)
-
-
     useEffect(() => {
         if (getTotalCount) {
             dispatch(setTotalCount({totalCount}))
@@ -58,6 +47,16 @@ export const useTasks = (todoId: string) => {
         }
         return () => clearTimeout(timerId)
     }, [data, isFetching])
+
+
+
+    const tasks = data && data.items
+    const getTotalCount = data ? data.totalCount : 5
+    const pages = getTotalCount && Math.ceil(getTotalCount / pageSize)
+
+
+
+
     const changePageHandler = (page: number) => {
         setViewTask(true)
         dispatch(changePage({page, pageSize}));

@@ -15,7 +15,7 @@ export const useTodoList = (todolistId: string) => {
     const removeTodoHandler = () => {
         removeTodo(`${todolistId}`)
     }
-    const addTaskHandler = (title: string) => {
+    const   addTaskHandler = (title: string) => {
         createTask({todolistId, title})
     }
     const changeTodoTitle = (title: string) => {

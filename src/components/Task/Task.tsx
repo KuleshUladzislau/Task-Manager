@@ -4,6 +4,7 @@ import deleteIcon from '../../assets/img/delete icon/TaskDelete/deleted.png'
 import styled from "styled-components";
 import {useRemoveTaskMutation, useReorderTaskMutation, useUpdateTaskMutation} from "../../Dall/api";
 import {Status} from "./hook/useTasks";
+import {useTask} from "./hook/useTask";
 
 
 export type TaskPropsType = {
@@ -37,10 +38,15 @@ export const Task = (props: TaskPropsType) => {
     } = props
 
     const activeTaskStyle = status === 1 ? '1px solid greenyellow' : ''
-    const [reorderTask] = useReorderTaskMutation()
-    const [removeTask] = useRemoveTaskMutation()
-    const [updateTask] = useUpdateTaskMutation()
-    const [disabledCompleted,setDisabledCompleted] = useState(false)
+    const {
+        disabledCompleted,
+        setDisabledCompleted,
+        reorderTask,
+        removeTask,
+        updateTask
+    }
+        = useTask(todoListId, id)
+
     const changeTaskTitle = (title: string) => {
         let newPost = {
             status, todoListId, deadline,
@@ -52,10 +58,10 @@ export const Task = (props: TaskPropsType) => {
         setDisabledCompleted(true)
         let newStatus = status === Status.Completed ? Status.New : Status.Completed
         updateTask({todoListId, taskId: id, item: {...props, status: newStatus}})
-             .finally(()=>setDisabledCompleted(false))
+            .finally(() => setDisabledCompleted(false))
     }
 
-    const dragStarHandler = (e: DragEvent<HTMLDivElement>, el: TaskPropsType) => {
+    const dragStarHandler = (el: TaskPropsType) => {
         setCurrentTask(el.id)
     }
 
@@ -78,7 +84,7 @@ export const Task = (props: TaskPropsType) => {
 
     return (
         <TaskStyle border={activeTaskStyle}
-                   onDragStart={(e: DragEvent<HTMLDivElement>) => dragStarHandler(e, {...props})}
+                   onDragStart={(e: DragEvent<HTMLDivElement>) => dragStarHandler({...props})}
                    onDragLeave={(e: DragEvent<HTMLDivElement>) => dragLeaveHandler(e)}
                    onDragEnd={(e: DragEvent<HTMLDivElement>) => dragEndHandler(e)}
                    onDragOver={(e: DragEvent<HTMLDivElement>) => dragOverHandler(e)}
@@ -94,19 +100,20 @@ export const Task = (props: TaskPropsType) => {
             <TaskTitle>
                 <EditableSpan title={title} onChange={changeTaskTitle}/>
             </TaskTitle>
-            <ButtonUniversal onClick={changeTaskStatus} title={'completed'} disabled={disabledCompleted} />
+            {/*<p>{startDate}</p>*/}
+            <ButtonUniversal onClick={changeTaskStatus} title={'completed'} disabled={disabledCompleted}/>
         </TaskStyle>
     );
 }
 
 
 type ButtonPropsType = {
-    disabled:boolean
-    onClick:()=>void
-    title:string
+    disabled: boolean
+    onClick: () => void
+    title: string
 }
-const ButtonUniversal = (props:ButtonPropsType) => {
-    const {title,onClick,disabled} = props
+const ButtonUniversal = (props: ButtonPropsType) => {
+    const {title, onClick, disabled} = props
 
 
     const onClickHandler = () => {
