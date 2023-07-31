@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {useGetTasksQuery} from "../../../Dall/api";
 import {TaskTypeAPI} from "../../../Dall/apiTypes";
 import {useAppDispatch, useAppSelector} from "../../hook/hooks";
-import {changePage, setPageSettings} from "../../../redux/Slices/paginatorSlice";
+import {changePage, setPageSettings, setTotalCount} from "../../../redux/Slices/paginatorSlice";
 
 export enum Status {
     New = 0,
@@ -11,26 +11,57 @@ export enum Status {
 
 export type FilterType = 'all' | 'active' | 'done'
 export const useTasks = (todoId: string) => {
-    const dispatch = useAppDispatch()
 
-    const {page, pageSize, totalCount} = useAppSelector(state => state.pageSettings)
-    const {data, isFetching} = useGetTasksQuery({todoId, pageSize, page})
-    const [currentTask, setCurrentTask] = useState<string>('')
+
+    const dispatch = useAppDispatch()
+    const {
+        page,
+        pageSize,
+        totalCount
+    } = useAppSelector(state => state.pageSettings)
+    const {
+        data,
+        isFetching,
+        isSuccess,
+        refetch
+    }
+        = useGetTasksQuery({
+        todoId,
+        page,
+        pageSize
+    })
+
+    const [
+        currentTask,
+        setCurrentTask
+    ] = useState<string>('')
+    const [
+        viewTasks,
+        setViewTask
+    ] = useState(false)
+
     const tasks = data && data.items
     const getTotalCount = data ? data.totalCount : 5
     const pages = getTotalCount && Math.ceil(getTotalCount / pageSize)
 
-    const changePageHandler = (page: number) => {
-        dispatch(changePage({page, pageSize}))
-    }
-
 
     useEffect(() => {
         if (getTotalCount) {
-            dispatch(setPageSettings({page, pageSize,totalCount}))
+            dispatch(setTotalCount({totalCount}))
         }
-    }, [data])
+        if (!isFetching) {
+            setTimeout(()=>{
+                setViewTask(false)
+            },500)
+        }
 
+
+    }, [data, isFetching])
+    const changePageHandler = (page: number) => {
+        setViewTask(true)
+        refetch()
+        dispatch(changePage({page, pageSize}));
+    }
 
 
     const [filter, setFilter] = useState<FilterType>('all')
@@ -40,7 +71,6 @@ export const useTasks = (todoId: string) => {
 
 
     const taskFilter = (filter: FilterType, task: TaskTypeAPI[] | undefined) => {
-
         switch (filter) {
             case "active":
                 return task?.filter(t => t.status === Status.New)
@@ -63,6 +93,8 @@ export const useTasks = (todoId: string) => {
         filter,
         currentTask,
         isFetching,
+        viewTasks,
+        isSuccess,
         setCurrentTask,
         changePageHandler,
         setAll,

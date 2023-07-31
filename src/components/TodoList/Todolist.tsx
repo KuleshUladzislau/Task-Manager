@@ -36,6 +36,7 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
         filter,
         currentTask,
         isFetching,
+        viewTasks,
         setCurrentTask,
         changePageHandler,
         setAll,
@@ -64,6 +65,7 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
     )
 
 
+
     return (
         <TodolistContainer>
             <TitleContainer>
@@ -78,10 +80,10 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
                 <FilterButton color={filter === 'done' ? 'orange' : 'white'} onClick={setDone}>completed</FilterButton>
             </ButtonContainer>
             <TaskContainer>
-                { filter === 'all' && page > 1 &&
+                {!viewTasks && filter === 'all' && page > 1 &&
                     <ArrowStyleLeft onClick={() => changePageHandler(page - 1)}/>}
-                {filteredTasks}
-                { filter === 'all' && page < pages &&
+                {!viewTasks ? filteredTasks : 'loading...'}
+                {!viewTasks && filter === 'all' && page < pages &&
                     <ArrowStyleRight onClick={() => changePageHandler(page + 1)}/>}
             </TaskContainer>
             {!isFetching && filter === 'all' && <Pages pageSize={pageSize} allPage={pages} currentPage={page}/>}

@@ -44,27 +44,12 @@ export const todosApi = createApi({
         }),
 
         getTasks: build.query<ResponseTaskType, {todoId:string,pageSize:number,page:number}>({
-            query: ({todoId,pageSize=5,page}) => ({
+            query: ({todoId,page=1,pageSize=5}) => ({
                 url: `todo-lists/${todoId}/tasks?count=${pageSize}&page=${page}`,
                 method: 'GET',
-                keepUnusedData:true,
+                keepUnusedData: true
             }),
             providesTags: ['Todos']
-
-        }),
-
-        changePageTasks: build.query<ResponseTaskType, {todoId:string,pageSize:number,page:number}>({
-            query: ({todoId,pageSize=5,page}) => ({
-                url: `todo-lists/${todoId}/tasks?count=${pageSize}&page=${page}`,
-                method: 'GET',
-                params:{
-                    _page : page,
-                    _count:pageSize
-                }
-
-            }),
-            providesTags: ['Todos']
-
         }),
 
         createTask: build.mutation<ResponseType, { todolistId: string, title: string }>({
@@ -159,7 +144,6 @@ export const {
     useLogoutMutation,
     useMeQuery  ,
     useGetCaptchaQuery,
-    useChangePageTasksQuery,
     useReorderTaskMutation
 } = todosApi
 
