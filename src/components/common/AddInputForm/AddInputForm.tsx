@@ -36,8 +36,6 @@ export const AddInputForm = (props: AddInputFormPropsType) => {
         }
         onClick(text)
         setText('')
-
-
     }
 
 
@@ -50,7 +48,6 @@ export const AddInputForm = (props: AddInputFormPropsType) => {
                           onBlur={onBlurHandler}
             />
             <Button onClick={onClickHandler}>ADD</Button>
-
             {error && <div>{error}</div>}
         </AddInputFormContainer>
     );
@@ -73,7 +70,6 @@ const InputAddForm = styled.input`
   outline: none;
   font-size: 20px;
   color: white;
-
   &:not(:focus) {
     background-color: transparent;
   }
@@ -81,8 +77,6 @@ const InputAddForm = styled.input`
     background-color: transparent;
   }
 `
-
-
 
 const Button = styled.button`
   background: linear-gradient(to right, rgba(255, 165, 0, 0.55), #FF69B4);

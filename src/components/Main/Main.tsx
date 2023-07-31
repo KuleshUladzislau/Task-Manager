@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { useGetAllTodosQuery} from "../../Dall/api";
 
 
-export const Main = () => {
+export const Main = React.memo(() => {
     const {data,isSuccess} = useGetAllTodosQuery()
 
 
@@ -36,7 +36,7 @@ export const Main = () => {
             </Content>
         </MainContainer>
     )
-}
+})
 const MainContainer = styled.div`
   display: flex;
   padding: 10px;

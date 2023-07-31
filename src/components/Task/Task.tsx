@@ -1,10 +1,9 @@
-import React, {DragEvent} from 'react';
+import React, {DragEvent, useEffect, useState} from 'react';
 import {EditableSpan} from "../common/EditableSpan/EditableSpan";
 import deleteIcon from '../../assets/img/delete icon/TaskDelete/deleted.png'
 import styled from "styled-components";
 import {useRemoveTaskMutation, useReorderTaskMutation, useUpdateTaskMutation} from "../../Dall/api";
 import {Status} from "./hook/useTasks";
-
 
 
 export type TaskPropsType = {
@@ -18,12 +17,12 @@ export type TaskPropsType = {
     todoListId: string
     order: number
     addedDate: string,
-    currentTask:string,
-    setCurrentTask:(id:string)=>void
-    isFetching:boolean
+    currentTask: string,
+    setCurrentTask: (id: string) => void
+    isFetching: boolean
 }
 
-export const Task = React.memo((props: TaskPropsType) => {
+export const Task = (props: TaskPropsType) => {
     const {
         title,
         status,
@@ -33,7 +32,6 @@ export const Task = React.memo((props: TaskPropsType) => {
         description,
         priority,
         startDate,
-        isFetching,
         setCurrentTask,
         currentTask
     } = props
@@ -42,17 +40,22 @@ export const Task = React.memo((props: TaskPropsType) => {
     const [reorderTask] = useReorderTaskMutation()
     const [removeTask] = useRemoveTaskMutation()
     const [updateTask] = useUpdateTaskMutation()
+    const [disabledCompleted,setDisabledCompleted] = useState(false)
     const changeTaskTitle = (title: string) => {
-        let newPost = {status, todoListId, deadline,
-            description, priority, startDate,}
+        let newPost = {
+            status, todoListId, deadline,
+            description, priority, startDate,
+        }
         updateTask({todoListId, taskId: id, item: {...newPost, title}})
     }
     const changeTaskStatus = () => {
+        setDisabledCompleted(true)
         let newStatus = status === Status.Completed ? Status.New : Status.Completed
         updateTask({todoListId, taskId: id, item: {...props, status: newStatus}})
+             .finally(()=>setDisabledCompleted(false))
     }
 
-    const dragStarHandler = (e: DragEvent<HTMLDivElement>, el:TaskPropsType) => {
+    const dragStarHandler = (e: DragEvent<HTMLDivElement>, el: TaskPropsType) => {
         setCurrentTask(el.id)
     }
 
@@ -65,14 +68,14 @@ export const Task = React.memo((props: TaskPropsType) => {
     const dragOverHandler = (e: DragEvent<HTMLDivElement>) => {
         e.preventDefault()
     }
-    const onDropHandler = (e: DragEvent<HTMLDivElement>, el:TaskPropsType) => {
-        reorderTask({todoListId,taskId:currentTask,putAfterItemId:el.id})
+    const onDropHandler = (e: DragEvent<HTMLDivElement>, el: TaskPropsType) => {
+        reorderTask({todoListId, taskId: currentTask, putAfterItemId: el.id})
     }
 
     let removeTaskHandler = () => {
         removeTask({todoListId, taskId: id})
     }
-    console.log(isFetching)
+
     return (
         <TaskStyle border={activeTaskStyle}
                    onDragStart={(e: DragEvent<HTMLDivElement>) => dragStarHandler(e, {...props})}
@@ -91,10 +94,28 @@ export const Task = React.memo((props: TaskPropsType) => {
             <TaskTitle>
                 <EditableSpan title={title} onChange={changeTaskTitle}/>
             </TaskTitle>
-            <ButtonCompleted disabled={isFetching} onClick={changeTaskStatus}>Completed</ButtonCompleted>
+            <ButtonUniversal onClick={changeTaskStatus} title={'completed'} disabled={disabledCompleted} />
         </TaskStyle>
     );
-})
+}
+
+
+type ButtonPropsType = {
+    disabled:boolean
+    onClick:()=>void
+    title:string
+}
+const ButtonUniversal = (props:ButtonPropsType) => {
+    const {title,onClick,disabled} = props
+
+
+    const onClickHandler = () => {
+        onClick()
+    }
+    return (
+        <ButtonCompleted disabled={disabled} onClick={onClickHandler}>{title}</ButtonCompleted>
+    )
+}
 
 interface TaskStyleProps {
     border: string
@@ -143,10 +164,12 @@ const ButtonCompleted = styled.button`
   border-radius: 25px;
   color: white;
   margin: 20px;
+
   &:hover {
     background: linear-gradient(to right, rgba(255, 165, 0, 0.5), #FF69B4);
   }
-  &:disabled{
+
+  &:disabled {
     background: linear-gradient(to right, rgba(255, 165, 0, 0), #FF69B4);
   }
 `

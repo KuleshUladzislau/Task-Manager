@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58f80f03-97c0-446c-92df-9526ffd2d9c0" name="Changes" comment="">
+    <list default="true" id="58f80f03-97c0-446c-92df-9526ffd2d9c0" name="Changes" comment="corrected work pagination">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/preloader/Spinner-1s-200px.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/hook/useTasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/hook/useTasks.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TodoList/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TodoList/Todolist.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/common/AddInputForm/AddInputForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/AddInputForm/AddInputForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Preloader/Preloader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Preloader/Preloader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Preloader/Ripple-1s-200px.svg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +124,9 @@
       <workItem from="1690455693992" duration="5066000" />
       <workItem from="1690464488832" duration="5460000" />
       <workItem from="1690473280806" duration="3445000" />
-      <workItem from="1690621143915" duration="19518000" />
+      <workItem from="1690621143915" duration="21264000" />
+      <workItem from="1690647079485" duration="3776000" />
+      <workItem from="1690789948002" duration="1724000" />
     </task>
     <task id="LOCAL-00001" summary="fixed visible pages">
       <option name="closed" value="true" />
@@ -161,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690642678307</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="corrected work pagination">
+      <option name="closed" value="true" />
+      <created>1690645402656</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1690645402656</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

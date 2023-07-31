@@ -1,5 +1,5 @@
 import React from 'react';
-import preloader from '../../../assets/preloader/Spinner-1s-200px.svg'
+import preloader from '../../../assets/preloader/Ellipsis-3.4s-200px.svg'
 import styled from "styled-components";
 
 export const Preloader = () => {
@@ -13,13 +13,13 @@ const PreloaderStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  //background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);
-  
-  height: 100vh;
+  position: absolute;
+  top:20px;
+  left: 0;
   width: 100vw;
- 
+  
   & img {
-    width: 300px;
-    height: 300px;
+    width: 50px;
+    height: 50px;
   }
 `

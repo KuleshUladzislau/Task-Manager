@@ -19,8 +19,6 @@ export type TodolistPropsType = {
 export const Todolist = React.memo((props: TodolistPropsType) => {
     const {title, id} = props
     const [activeModal, setActiveModal] = useState(false)
-
-
     const createTaskHandler = () => setActiveModal(true)
 
 
@@ -72,6 +70,7 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
                 <TodoTitle><EditableSpan title={title} onChange={changeTodoTitle}/></TodoTitle>
                 <img src={todoDeleteIcon} alt="" onClick={removeTodoHandler}/>
             </TitleContainer>
+            {isFetching && <Preloader/>}
             <ButtonCreateTask onClick={createTaskHandler}>Add Task</ButtonCreateTask>
             <ButtonContainer>
                 <FilterButton color={filter === 'all' ? 'orange' : 'white'} onClick={setAll}>all</FilterButton>
@@ -79,13 +78,13 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
                 <FilterButton color={filter === 'done' ? 'orange' : 'white'} onClick={setDone}>completed</FilterButton>
             </ButtonContainer>
             <TaskContainer>
-                {filter === 'all' && page > 1 && <ArrowStyleLeft onClick={() => changePageHandler(page - 1)}/>}
-                {/*{isFetching ? <PreloaderTodosStyle><Preloader/></PreloaderTodosStyle> : filteredTasks}*/}
+                { filter === 'all' && page > 1 &&
+                    <ArrowStyleLeft onClick={() => changePageHandler(page - 1)}/>}
                 {filteredTasks}
-                {filter === 'all' && page < pages &&
+                { filter === 'all' && page < pages &&
                     <ArrowStyleRight onClick={() => changePageHandler(page + 1)}/>}
             </TaskContainer>
-            {filter === 'all' && <Pages pageSize={pageSize} allPage={pages} currentPage={page}/>}
+            {!isFetching && filter === 'all' && <Pages pageSize={pageSize} allPage={pages} currentPage={page}/>}
             <Modal title={'Create Task'} active={activeModal} setActive={setActiveModal}>
                 <AddInputForm onClick={addTaskHandler}/>
             </Modal>

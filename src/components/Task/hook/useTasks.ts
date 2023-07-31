@@ -29,7 +29,7 @@ export const useTasks = (todoId: string) => {
         if (getTotalCount) {
             dispatch(setPageSettings({page, pageSize,totalCount}))
         }
-    }, [data,dispatch])
+    }, [data])
 
 
 
