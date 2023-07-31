@@ -82,11 +82,11 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
             <TaskContainer>
                 {!viewTasks && filter === 'all' && page > 1 &&
                     <ArrowStyleLeft onClick={() => changePageHandler(page - 1)}/>}
-                {!viewTasks ? filteredTasks : 'loading...'}
+                {!viewTasks ? filteredTasks : <Preloader/>}
                 {!viewTasks && filter === 'all' && page < pages &&
                     <ArrowStyleRight onClick={() => changePageHandler(page + 1)}/>}
             </TaskContainer>
-            {!isFetching && filter === 'all' && <Pages pageSize={pageSize} allPage={pages} currentPage={page}/>}
+            {!viewTasks  && filter === 'all' && <Pages pageSize={pageSize} allPage={pages} currentPage={page}/>}
             <Modal title={'Create Task'} active={activeModal} setActive={setActiveModal}>
                 <AddInputForm onClick={addTaskHandler}/>
             </Modal>
@@ -187,6 +187,7 @@ const ButtonCreateTask = styled.div`
   font-weight: 600;
   font-size: 20px;
   margin-left: 40px;
+  cursor: pointer;
 `
 
 const PreloaderTodosStyle = styled.div`

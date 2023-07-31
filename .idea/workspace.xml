@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58f80f03-97c0-446c-92df-9526ffd2d9c0" name="Changes" comment="corrected work pagination">
+    <list default="true" id="58f80f03-97c0-446c-92df-9526ffd2d9c0" name="Changes" comment="added preloader in tasks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dall/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dall/api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Task/hook/useTasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/hook/useTasks.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TodoList/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TodoList/Todolist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TodoList/hook/useTodoList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TodoList/hook/useTodoList.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/Slices/paginatorSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Slices/paginatorSlice.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +133,7 @@
       <workItem from="1690621143915" duration="21264000" />
       <workItem from="1690647079485" duration="3776000" />
       <workItem from="1690789948002" duration="14901000" />
-      <workItem from="1690809591660" duration="1647000" />
+      <workItem from="1690809591660" duration="4550000" />
     </task>
     <task id="LOCAL-00001" summary="fixed visible pages">
       <option name="closed" value="true" />
@@ -194,7 +191,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690792038885</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="corrected work loader after press change page">
+      <option name="closed" value="true" />
+      <created>1690811441737</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1690811441737</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,6 +247,8 @@
     <MESSAGE value="fixed visible pages" />
     <MESSAGE value="add task drag and drop" />
     <MESSAGE value="corrected work pagination" />
-    <option name="LAST_COMMIT_MESSAGE" value="corrected work pagination" />
+    <MESSAGE value="corrected work loader after press change page" />
+    <MESSAGE value="added preloader in tasks" />
+    <option name="LAST_COMMIT_MESSAGE" value="added preloader in tasks" />
   </component>
 </project>

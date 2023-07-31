@@ -2,7 +2,8 @@ import {useEffect, useState} from "react";
 import {useGetTasksQuery} from "../../../Dall/api";
 import {TaskTypeAPI} from "../../../Dall/apiTypes";
 import {useAppDispatch, useAppSelector} from "../../hook/hooks";
-import {changePage, setPageSettings, setTotalCount} from "../../../redux/Slices/paginatorSlice";
+import {changePage, setTotalCount} from "../../../redux/Slices/paginatorSlice";
+
 
 export enum Status {
     New = 0,
@@ -14,6 +15,7 @@ export const useTasks = (todoId: string) => {
 
 
     const dispatch = useAppDispatch()
+    const [timerId, setTimerId] = useState<number>()
     const {
         page,
         pageSize,
@@ -23,7 +25,6 @@ export const useTasks = (todoId: string) => {
         data,
         isFetching,
         isSuccess,
-        refetch
     }
         = useGetTasksQuery({
         todoId,
@@ -50,16 +51,15 @@ export const useTasks = (todoId: string) => {
             dispatch(setTotalCount({totalCount}))
         }
         if (!isFetching) {
-            setTimeout(()=>{
+            const id = +setTimeout(() => {
                 setViewTask(false)
-            },500)
+            }, 300)
+            setTimerId(id)
         }
-
-
+        return () => clearTimeout(timerId)
     }, [data, isFetching])
     const changePageHandler = (page: number) => {
         setViewTask(true)
-        refetch()
         dispatch(changePage({page, pageSize}));
     }
 
