@@ -19,21 +19,27 @@ export const useTasks = (todoId: string) => {
     const [currentTask, setCurrentTask] = useState<string>('')
     const [viewTasks, setViewTask] = useState(false)
 
-    const {
-        page,
-        pageSize,
-        totalCount
-    } = useAppSelector(state => state.pageSettings)
-    const {
-        data,
-        isFetching,
-        isSuccess,
-    }
-        = useGetTasksQuery({
-        todoId,
-        page,
-        pageSize
-    })
+    const
+        {
+            page,
+            pageSize,
+            totalCount
+        }
+            = useAppSelector(state => state.pageSettings)
+
+
+    const
+        {
+            data,
+            isFetching,
+            isSuccess,
+        }
+            = useGetTasksQuery({
+            todoId,
+            page,
+            pageSize
+        })
+
 
     useEffect(() => {
         if (getTotalCount) {
@@ -49,12 +55,9 @@ export const useTasks = (todoId: string) => {
     }, [data, isFetching])
 
 
-
     const tasks = data && data.items
     const getTotalCount = data ? data.totalCount : 5
     const pages = getTotalCount && Math.ceil(getTotalCount / pageSize)
-
-
 
 
     const changePageHandler = (page: number) => {

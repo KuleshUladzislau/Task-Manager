@@ -1,10 +1,8 @@
-import React, {DragEvent, useEffect, useState} from 'react';
-import {EditableSpan} from "../common/EditableSpan/EditableSpan";
-import deleteIcon from '../../assets/img/delete icon/TaskDelete/deleted.png'
+import React, {ChangeEvent, DragEvent, useState} from 'react';
 import styled from "styled-components";
-import {Status} from "./hook/useTasks";
 import {useTask} from "./hook/useTask";
-import {UniversalButton} from "../common/UniversalButton/UniversalButton";
+import {TaskPriorityMenu} from "./TaskPriorityMenu/TaskPriorityMenu";
+import {TaskMain} from "./TaskMain/TaskMain";
 
 
 export type TaskPropsType = {
@@ -24,128 +22,88 @@ export type TaskPropsType = {
 }
 
 export const Task = (props: TaskPropsType) => {
-    const {
-        title,
-        status,
-        todoListId,
-        id,
-        deadline,
-        description,
-        priority,
-        startDate,
-        setCurrentTask,
-        currentTask
-    } = props
-
-    const activeTaskStyle = status === 1 ? '1px solid greenyellow' : ''
-
-    const taskForUpdate =
+    const
         {
-            status,
+            title,
             todoListId,
-            deadline,
-            description,
+            id,
             priority,
-            startDate,
-            title
+            ...restProps
+
         }
+            = props
 
 
-    const {
-        disabledCompleted,
-        changeTaskStatus,
-        reorderTask,
-        removeTaskHandler,
-        changeTaskTitle
-    }
-        = useTask
-    (
-        todoListId,
-        id,
-        taskForUpdate,
-        title,
-        status
-    )
-
-
-    const dragStarHandler = (el: TaskPropsType) => {
-        setCurrentTask(el.id)
-    }
-
-    const dragLeaveHandler = (e: DragEvent<HTMLDivElement>) => {
-        e.preventDefault()
-    }
-    const dragEndHandler = (e: DragEvent<HTMLDivElement>) => {
-        e.preventDefault()
-    }
-    const dragOverHandler = (e: DragEvent<HTMLDivElement>) => {
-        e.preventDefault()
-    }
-    const onDropHandler = (e: DragEvent<HTMLDivElement>, el: TaskPropsType) => {
-        reorderTask({todoListId, taskId: currentTask, putAfterItemId: el.id})
-    }
+    const
+        {
+            disabledCompleted,
+            priorityColor,
+            priorityMode,
+            changePriorityValue,
+            changePriority,
+            changeTaskStatus,
+            reorderHandler,
+            removeTaskHandler,
+            changeTaskTitle,
+            dragStarHandler
+        }
+            = useTask
+        (
+            todoListId,
+            id,
+            {...props}
+        )
 
 
     return (
-        <TaskStyle border={activeTaskStyle}
-                   onDragStart={() => dragStarHandler({...props})}
-                   onDragLeave={(e: DragEvent<HTMLDivElement>) => dragLeaveHandler(e)}
-                   onDragEnd={(e: DragEvent<HTMLDivElement>) => dragEndHandler(e)}
-                   onDragOver={(e: DragEvent<HTMLDivElement>) => dragOverHandler(e)}
-                   onDrop={(e: DragEvent<HTMLDivElement>) => onDropHandler(e, {...props})}
-                   draggable={true}
-        >
-            <ButtonWrapper>
-                <Button onClick={removeTaskHandler}>
-                    <img src={deleteIcon} alt="x"/>
-                </Button>
-            </ButtonWrapper>
-            <h3 style={{color: 'white'}}>Task</h3>
-            <TaskTitle>
-                <EditableSpan title={title} onChange={changeTaskTitle}/>
-            </TaskTitle>
-            <UniversalButton onClick={changeTaskStatus} title={'completed'} disabled={disabledCompleted}/>
-        </TaskStyle>
+        priorityMode
+            ? <TaskMain
+                priorityColor={priorityColor}
+                dragStarHandler={dragStarHandler}
+                changeTaskStatus={changeTaskStatus}
+                changeTaskTitle={changeTaskTitle}
+                disabledCompleted={disabledCompleted}
+                removeTaskHandler={removeTaskHandler}
+                reorderTask={reorderHandler}
+                changePriorityValue={changePriorityValue}
+                title={title}
+            />
+            : <TaskPriorityMenu
+                priorityColor={priorityColor}
+                priority={priority}
+                changePriorityValue={changePriorityValue}
+                changePriority={changePriority}
+            />
+
     );
 }
 
 
-
-
-interface TaskStyleProps {
-    border: string
-}
-
-const TaskStyle = styled.div<TaskStyleProps>`
+export const TaskStyle = styled.div`
   text-align: center;
   width: 200px;
-  min-height: 200px;
+  min-height: 285px;
   background: rgba(203, 199, 199, 0.15);
-  border: ${props => props.border};
+
   margin: 10px;
   border-radius: 10px;
   overflow-wrap: break-word;
 
 `
 
-const TaskTitle = styled.span`
-  display: flex;
-  flex-direction: column;
-  color: white;
-  padding: 10px;
-  min-height: 100px;
-`
 
+interface PriorityPropsType {
+    background: string
+}
 
-const Button = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-`
-const ButtonWrapper = styled.div`
-  position: relative;
+export const PriorityStyle = styled.div<PriorityPropsType>`
+  background: ${props => props.background};
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-left: -1px;
+  margin-top: -1px;
+  width: 101%;
+  text-align: center;
 
 `
 

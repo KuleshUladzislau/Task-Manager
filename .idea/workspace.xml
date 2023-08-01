@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58f80f03-97c0-446c-92df-9526ffd2d9c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/common/UniversalButton/UniversalButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="58f80f03-97c0-446c-92df-9526ffd2d9c0" name="Changes" comment="refactoring task">
+      <change afterPath="$PROJECT_DIR$/src/components/Task/TaskMain/TaskMain.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Task/TaskPriorityMenu/TaskPriorityMenu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Task/hook/useTask.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/hook/useTask.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Paginator/Pages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Paginator/Pages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/hook/useTasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/hook/useTasks.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +137,10 @@
       <workItem from="1690647079485" duration="3776000" />
       <workItem from="1690789948002" duration="14901000" />
       <workItem from="1690809591660" duration="7101000" />
-      <workItem from="1690871843742" duration="2678000" />
+      <workItem from="1690871843742" duration="10626000" />
+      <workItem from="1690886796555" duration="116000" />
+      <workItem from="1690890613175" duration="3903000" />
+      <workItem from="1690901946209" duration="5411000" />
     </task>
     <task id="LOCAL-00001" summary="fixed visible pages">
       <option name="closed" value="true" />
@@ -223,7 +222,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690817827991</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="update hook useTask and create UniversalButton">
+      <option name="closed" value="true" />
+      <created>1690874643665</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1690874643665</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,6 +281,8 @@
     <MESSAGE value="corrected work loader after press change page" />
     <MESSAGE value="added preloader in tasks" />
     <MESSAGE value="create hook useTask" />
-    <option name="LAST_COMMIT_MESSAGE" value="create hook useTask" />
+    <MESSAGE value="update hook useTask and create UniversalButton" />
+    <MESSAGE value="refactoring task" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring task" />
   </component>
 </project>
