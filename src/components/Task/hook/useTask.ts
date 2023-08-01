@@ -40,14 +40,6 @@ export const useTask =
                 title
             }
 
-        const priorityColor =
-            priority === 0 ? 'red'
-                : priority === 1 ? 'skyBlue'
-                    : priority === 2 ? 'yellow'
-                        : priority === 3 ? 'violet'
-                            : priority === 4 ? 'orange' : ''
-
-
         let removeTaskHandler = () => removeTask({todoListId, taskId})
 
         let newStatus = status === Status.Completed ? Status.New : Status.Completed
@@ -64,7 +56,7 @@ export const useTask =
             taskId,
             item: {...taskForUpdate, priority}
         })
-        const changePriorityValue = () => setPriorityMode(!priorityMode)
+        const changePriorityMode = () => setPriorityMode(!priorityMode)
 
 
         const dragStarHandler = () => setCurrentTask(taskId)
@@ -73,10 +65,9 @@ export const useTask =
 
 
         return {
-            priorityColor,
             disabledCompleted,
             priorityMode,
-            changePriorityValue,
+            changePriorityMode,
             dragStarHandler,
             changePriority,
             changeTaskStatus,

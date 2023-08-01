@@ -32,14 +32,19 @@ export const Task = (props: TaskPropsType) => {
 
         }
             = props
+    const priorityColor =
+        priority === 0 ? 'red'
+            : priority === 1 ? 'yellow'
+                : priority === 2 ? 'orange'
+                    : priority === 3 ? 'violet'
+                        : priority === 4 ? 'skyBlue' : ''
 
 
     const
         {
             disabledCompleted,
-            priorityColor,
             priorityMode,
-            changePriorityValue,
+            changePriorityMode,
             changePriority,
             changeTaskStatus,
             reorderHandler,
@@ -55,27 +60,26 @@ export const Task = (props: TaskPropsType) => {
         )
 
 
-    return (
-        priorityMode
-            ? <TaskMain
-                priorityColor={priorityColor}
-                dragStarHandler={dragStarHandler}
-                changeTaskStatus={changeTaskStatus}
-                changeTaskTitle={changeTaskTitle}
-                disabledCompleted={disabledCompleted}
-                removeTaskHandler={removeTaskHandler}
-                reorderTask={reorderHandler}
-                changePriorityValue={changePriorityValue}
-                title={title}
-            />
-            : <TaskPriorityMenu
-                priorityColor={priorityColor}
-                priority={priority}
-                changePriorityValue={changePriorityValue}
-                changePriority={changePriority}
-            />
+    return priorityMode
+        ? <TaskMain
+            priorityColor={priorityColor}
+            dragStarHandler={dragStarHandler}
+            changeTaskStatus={changeTaskStatus}
+            changeTaskTitle={changeTaskTitle}
+            disabledCompleted={disabledCompleted}
+            removeTaskHandler={removeTaskHandler}
+            reorderTask={reorderHandler}
+            changePriorityMode={changePriorityMode}
+            title={title}
+        />
+        : <TaskPriorityMenu
+            priorityColor={priorityColor}
+            priority={priority}
+            changePriorityMode={changePriorityMode}
+            changePriority={changePriority}
+        />
 
-    );
+
 }
 
 
@@ -84,11 +88,9 @@ export const TaskStyle = styled.div`
   width: 200px;
   min-height: 285px;
   background: rgba(203, 199, 199, 0.15);
-
   margin: 10px;
   border-radius: 10px;
   overflow-wrap: break-word;
-
 `
 
 
@@ -104,7 +106,6 @@ export const PriorityStyle = styled.div<PriorityPropsType>`
   margin-top: -1px;
   width: 101%;
   text-align: center;
-
 `
 
 

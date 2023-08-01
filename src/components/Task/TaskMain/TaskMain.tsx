@@ -12,7 +12,7 @@ export type TaskMainPropsType = {
     removeTaskHandler: () => void
     changeTaskTitle: (title: string) => void
     priorityColor: string
-    changePriorityValue: () => void
+    changePriorityMode: () => void
     title: string
     dragStarHandler: () => void
 }
@@ -25,7 +25,7 @@ export const TaskMain = (props: TaskMainPropsType) => {
             changeTaskTitle,
             disabledCompleted,
             priorityColor,
-            changePriorityValue,
+            changePriorityMode,
             title,
             dragStarHandler
         }
@@ -47,7 +47,7 @@ export const TaskMain = (props: TaskMainPropsType) => {
             onDrop={onDropHandler}
             draggable={true}
         >
-            <PriorityStyle background={`${priorityColor}`} onClick={changePriorityValue}>priority</PriorityStyle>
+            <PriorityStyle background={`${priorityColor}`} onClick={changePriorityMode}>priority</PriorityStyle>
             <ButtonWrapper>
                 <Button onClick={removeTaskHandler}>
                     <img src={deleteIcon} alt="x"/>

@@ -1,11 +1,12 @@
 import React from 'react';
 import {PriorityStyle, TaskStyle} from "../Task";
+import styled from "styled-components";
 
 
 type TaskPriorityMenuType = {
     priority: number
     changePriority: (value: number) => void
-    changePriorityValue: () => void
+    changePriorityMode: () => void
     priorityColor: string
 }
 
@@ -16,31 +17,38 @@ export const TaskPriorityMenu = (props: TaskPriorityMenuType) => {
             priority,
             priorityColor,
             changePriority,
-            changePriorityValue
+            changePriorityMode
         }
             = props
 
 
     const highPriority = priority === 0 ? 'red' : ''
-    const middlePriority = priority === 1 ? 'skyBlue' : ''
-    const lowPriority = priority === 2 ? 'yellow' : ''
-    const veryHighPriority = priority === 3 ? 'violet' : ''
-    const smallMiddlePriority = priority === 4 ? 'orange' : ''
+    const almostHighPriority = priority === 1 ? 'yellow' : ''
+    const MiddlePriority = priority === 2 ? 'orange' : ''
+    const lowPriority = priority === 3 ? 'violet' : ''
+    const veryLowPriority = priority === 4 ? 'skyBlue' : ''
 
 
     return (
         <TaskStyle>
-            <PriorityStyle background={`${priorityColor}`} onClick={changePriorityValue}>priority</PriorityStyle>
+            <PriorityStyle background={`${priorityColor}`} onClick={changePriorityMode}>priority</PriorityStyle>
             <ul>
-                <li onClick={() => changePriority(0)} style={{background: `${highPriority}`}}>high</li>
-                <li onClick={() => changePriority(1)} style={{background: `${middlePriority}`}}>middle</li>
-                <li onClick={() => changePriority(2)} style={{background: `${lowPriority}`}}>low</li>
-                <li onClick={() => changePriority(3)} style={{background: `${veryHighPriority}`}}>low</li>
-                <li onClick={() => changePriority(4)} style={{background: `${smallMiddlePriority}`}}>low</li>
+                <ListStyle onClick={() => changePriority(0)} background={highPriority}>high</ListStyle>
+                <ListStyle onClick={() => changePriority(1)} background={almostHighPriority}>almost high</ListStyle>
+                <ListStyle onClick={() => changePriority(2)} background={MiddlePriority}>middle</ListStyle>
+                <ListStyle onClick={() => changePriority(3)} background={lowPriority}>low</ListStyle>
+                <ListStyle onClick={() => changePriority(4)} background={veryLowPriority}>very low</ListStyle>
             </ul>
         </TaskStyle>
     )
 }
 
+interface ListStyleProps {
 
+    background:string
+}
+
+const ListStyle = styled.li<ListStyleProps>`
+    background: ${props=>props.background};
+`
 
