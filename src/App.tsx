@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import './App.module.css';
 import {Login} from "./components/Login/Login";
 import {Route, Routes, useNavigate} from "react-router-dom";
@@ -15,7 +15,7 @@ import {Preloader} from "./components/common/Preloader/Preloader";
 function App() {
 
 
-    const {data, isFetching, isLoading,isSuccess} = useMeQuery()
+    const {data , isLoading} = useMeQuery()
     const isAuthorized = data?.resultCode
     const isAuth = useAppSelector(state => state.auth.isAuth)
 

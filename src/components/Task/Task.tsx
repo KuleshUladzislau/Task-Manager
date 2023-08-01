@@ -2,9 +2,9 @@ import React, {DragEvent, useEffect, useState} from 'react';
 import {EditableSpan} from "../common/EditableSpan/EditableSpan";
 import deleteIcon from '../../assets/img/delete icon/TaskDelete/deleted.png'
 import styled from "styled-components";
-import {useRemoveTaskMutation, useReorderTaskMutation, useUpdateTaskMutation} from "../../Dall/api";
 import {Status} from "./hook/useTasks";
 import {useTask} from "./hook/useTask";
+import {UniversalButton} from "../common/UniversalButton/UniversalButton";
 
 
 export type TaskPropsType = {
@@ -38,28 +38,35 @@ export const Task = (props: TaskPropsType) => {
     } = props
 
     const activeTaskStyle = status === 1 ? '1px solid greenyellow' : ''
+
+    const taskForUpdate =
+        {
+            status,
+            todoListId,
+            deadline,
+            description,
+            priority,
+            startDate,
+            title
+        }
+
+
     const {
         disabledCompleted,
-        setDisabledCompleted,
+        changeTaskStatus,
         reorderTask,
-        removeTask,
-        updateTask
+        removeTaskHandler,
+        changeTaskTitle
     }
-        = useTask(todoListId, id)
+        = useTask
+    (
+        todoListId,
+        id,
+        taskForUpdate,
+        title,
+        status
+    )
 
-    const changeTaskTitle = (title: string) => {
-        let newPost = {
-            status, todoListId, deadline,
-            description, priority, startDate,
-        }
-        updateTask({todoListId, taskId: id, item: {...newPost, title}})
-    }
-    const changeTaskStatus = () => {
-        setDisabledCompleted(true)
-        let newStatus = status === Status.Completed ? Status.New : Status.Completed
-        updateTask({todoListId, taskId: id, item: {...props, status: newStatus}})
-            .finally(() => setDisabledCompleted(false))
-    }
 
     const dragStarHandler = (el: TaskPropsType) => {
         setCurrentTask(el.id)
@@ -78,13 +85,10 @@ export const Task = (props: TaskPropsType) => {
         reorderTask({todoListId, taskId: currentTask, putAfterItemId: el.id})
     }
 
-    let removeTaskHandler = () => {
-        removeTask({todoListId, taskId: id})
-    }
 
     return (
         <TaskStyle border={activeTaskStyle}
-                   onDragStart={(e: DragEvent<HTMLDivElement>) => dragStarHandler({...props})}
+                   onDragStart={() => dragStarHandler({...props})}
                    onDragLeave={(e: DragEvent<HTMLDivElement>) => dragLeaveHandler(e)}
                    onDragEnd={(e: DragEvent<HTMLDivElement>) => dragEndHandler(e)}
                    onDragOver={(e: DragEvent<HTMLDivElement>) => dragOverHandler(e)}
@@ -100,29 +104,13 @@ export const Task = (props: TaskPropsType) => {
             <TaskTitle>
                 <EditableSpan title={title} onChange={changeTaskTitle}/>
             </TaskTitle>
-            {/*<p>{startDate}</p>*/}
-            <ButtonUniversal onClick={changeTaskStatus} title={'completed'} disabled={disabledCompleted}/>
+            <UniversalButton onClick={changeTaskStatus} title={'completed'} disabled={disabledCompleted}/>
         </TaskStyle>
     );
 }
 
 
-type ButtonPropsType = {
-    disabled: boolean
-    onClick: () => void
-    title: string
-}
-const ButtonUniversal = (props: ButtonPropsType) => {
-    const {title, onClick, disabled} = props
 
-
-    const onClickHandler = () => {
-        onClick()
-    }
-    return (
-        <ButtonCompleted disabled={disabled} onClick={onClickHandler}>{title}</ButtonCompleted>
-    )
-}
 
 interface TaskStyleProps {
     border: string
@@ -146,8 +134,6 @@ const TaskTitle = styled.span`
   color: white;
   padding: 10px;
   min-height: 100px;
-
-
 `
 
 
@@ -162,22 +148,5 @@ const ButtonWrapper = styled.div`
   position: relative;
 
 `
-const ButtonCompleted = styled.button`
-  background: transparent;
-  text-transform: uppercase;
-  border: none;
-  padding: 10px;
-  background: linear-gradient(to right, rgba(255, 165, 0, 1), #FF69B4);
-  border-radius: 25px;
-  color: white;
-  margin: 20px;
 
-  &:hover {
-    background: linear-gradient(to right, rgba(255, 165, 0, 0.5), #FF69B4);
-  }
-
-  &:disabled {
-    background: linear-gradient(to right, rgba(255, 165, 0, 0), #FF69B4);
-  }
-`
 

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ErrorMessage, Field, Form, Formik, useFormik} from "formik";
+import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
 import {useGetCaptchaQuery, useLoginMutation} from "../../Dall/api";
@@ -18,7 +18,7 @@ type ValuesType = {
 export const Login = () => {
 
 
-    const [login, {data, isLoading}] = useLoginMutation()
+    const [login, {data}] = useLoginMutation()
     const captcha = useGetCaptchaQuery().data?.url
     const [captchaStatus, setCaptchaStatus] = useState(false)
     const errorMessage = data?.messages[0]
@@ -73,7 +73,7 @@ export const Login = () => {
 
                         {captchaStatus &&
                             <FieldContainer>
-                                <img src={captcha}/>
+                                <img src={captcha} alt='captcha'/>
                                 <Input id="captcha" name="captcha" type='captcha' placeholder="captcha"/>
                             </FieldContainer>
                         }

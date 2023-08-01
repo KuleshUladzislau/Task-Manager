@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from "styled-components";
-import {useLoginMutation, useLogoutMutation, useMeQuery} from "../../Dall/api";
+import { useLogoutMutation, useMeQuery} from "../../Dall/api";
 import {useNavigate} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../hook/hooks";
+import {useAppDispatch} from "../hook/hooks";
 import {setAuthorized} from "../../redux/Slices/authSlice";
 
 
