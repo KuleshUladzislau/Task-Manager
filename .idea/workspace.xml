@@ -5,22 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58f80f03-97c0-446c-92df-9526ffd2d9c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Task/Task.stories.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Task/TaskPriorityMenu/TaskPriorityMenu.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.stories.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stories/decorators/ReduxStoreProviderDecorator.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dall/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dall/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dall/apiBaseQuery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dall/apiBaseQuery.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/TaskMain/TaskMain.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/TaskMain/TaskMain.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/TaskPriorityMenu/TaskPriorityMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/TaskPriorityMenu/TaskPriorityMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.stories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.stories.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TodoList/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TodoList/Todolist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/Slices/paginatorSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Slices/paginatorSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Paginator/Pages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Paginator/Pages.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +140,8 @@
       <workItem from="1690886796555" duration="116000" />
       <workItem from="1690890613175" duration="3903000" />
       <workItem from="1690901946209" duration="10785000" />
-      <workItem from="1690968550482" duration="8892000" />
+      <workItem from="1690968550482" duration="11140000" />
+      <workItem from="1690981823481" duration="4161000" />
     </task>
     <task id="LOCAL-00001" summary="fixed visible pages">
       <option name="closed" value="true" />
@@ -257,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690908980813</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="added storybook and task stories">
+      <option name="closed" value="true" />
+      <created>1690977967394</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1690977967394</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,7 +309,8 @@
     <MESSAGE value="update hook useTask and create UniversalButton" />
     <MESSAGE value="refactoring task" />
     <MESSAGE value="added styled components in taskPriorityMenu" />
-    <option name="LAST_COMMIT_MESSAGE" value="added styled components in taskPriorityMenu" />
+    <MESSAGE value="added storybook and task stories" />
+    <option name="LAST_COMMIT_MESSAGE" value="added storybook and task stories" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

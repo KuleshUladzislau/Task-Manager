@@ -34,8 +34,6 @@ export const Pages = (props: PaginatorType) => {
 const PaginatorStyle = styled.div`
   display: flex;
   position: relative;
-  top:70px;
-  left: -15px;
   flex-direction: row;
   align-items: center;
   justify-content: center;

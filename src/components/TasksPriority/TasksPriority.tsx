@@ -2,6 +2,7 @@ import React, {ReactNode} from 'react';
 
 import styled from "styled-components";
 import {Task} from "../Task/Task";
+import {Pages} from "../common/Paginator/Pages";
 
 type TaskType = {
     description: string
@@ -17,30 +18,19 @@ type TaskType = {
 }
 
 type TasksPriorityType = {
-    viewTasks:boolean
-    filter:string
-    page:number
-    pages:number
-    tasks:TaskType[]
-    changePageHandler:(page:number)=>void
-    pageSize:number
-    currentTask: string
-    setCurrentTask: (id: string) => void
-    isFetching: boolean
-
+    tasks: TaskType[]
 }
-const TasksPriority = () => {
+export const TasksPriority = (props: TasksPriorityType) => {
 
-   const tasks:TaskType[] = []
+    const {tasks} = props
 
     const currentTask = ''
-    const setCurrentTask = ()=>{}
+    const setCurrentTask = () => {
+    }
     const isFetching = false
 
 
-
-    const filteredTasks = tasks?.map(el =>
-
+    const filteredTasks = tasks?.map((el: any) =>
         <Task
             key={el.id}
             description={el.description}
@@ -60,27 +50,35 @@ const TasksPriority = () => {
     )
 
     return (
-
-            <TaskContainer >
-                {/*{visibleArrowLeft && <ArrowStyleLeft onClick={() => changePageHandler(page - 1)}/>}*/}
+        <TaskPriorityContainer>
+            <TaskContainer>
                 {filteredTasks}
-                asdf
-                {/*{visibleArrowRight && <ArrowStyleRight onClick={() => changePageHandler(page + 1)}/>}*/}
             </TaskContainer>
-
-
+            <Pages pageSize={3} currentPage={1}/>
+        </TaskPriorityContainer>
     );
 };
 
 export default TasksPriority;
 
+const TaskPriorityContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);
+  padding: 20px;
+  border-radius: 20px;
+  border: 5px solid yellow;
+
+`
+
 const TaskContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
+  border-radius: 20px;
+  padding: 20px;
 `
 
 const ArrowStyleRight = styled.div`

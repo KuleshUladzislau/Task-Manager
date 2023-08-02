@@ -106,6 +106,7 @@ const ButtonContainer = styled.div`
   justify-content: center;
   margin-left: 60px;
   height: 30px;
+  gap: 150px;
  
 `
 
