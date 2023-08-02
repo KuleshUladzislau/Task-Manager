@@ -1,13 +1,9 @@
 import {BaseQueryFn} from "@reduxjs/toolkit/dist/query/react";
 import axios, {AxiosError, AxiosRequestConfig} from "axios";
-import {AppDispatch} from "../redux/store";
 
 
-interface CustomQueryArgs extends AxiosRequestConfig {
-    onSuccess?: (dispatch: AppDispatch, data: unknown) => Promise<void>;
-}
 
-export type CustomBaseQueryType = BaseQueryFn<CustomQueryArgs, unknown, unknown>;
+
 
 
 

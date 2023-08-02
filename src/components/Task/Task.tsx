@@ -9,7 +9,7 @@ export type TaskPropsType = {
     description: string
     title: string
     status: number
-    priority: any
+    priority: number
     startDate: string
     deadline: string
     id: string
@@ -32,6 +32,7 @@ export const Task = (props: TaskPropsType) => {
 
         }
             = props
+
     const priorityColor =
         priority === 0 ? 'red'
             : priority === 1 ? 'yellow'
@@ -40,28 +41,37 @@ export const Task = (props: TaskPropsType) => {
                         : priority === 4 ? 'skyBlue' : ''
 
 
-    const
-        {
-            disabledCompleted,
-            priorityMode,
-            changePriorityMode,
-            changePriority,
-            changeTaskStatus,
-            reorderHandler,
-            removeTaskHandler,
-            changeTaskTitle,
-            dragStarHandler
-        }
-            = useTask
-        (
-            todoListId,
-            id,
-            {...props}
-        )
+
+    const priorityTitle =
+        priority === 0 ? 'high'
+            : priority === 1 ? 'almost high'
+                : priority === 2 ? 'middle'
+                    : priority === 3 ? 'low'
+                        : priority === 4 ? 'very low' : ''
+
+
+    const {
+        disabledCompleted,
+        priorityMode,
+        changePriorityMode,
+        changePriority,
+        changeTaskStatus,
+        reorderHandler,
+        removeTaskHandler,
+        changeTaskTitle,
+        dragStarHandler
+    }
+        = useTask
+    (
+        todoListId,
+        id,
+        {...props}
+    )
 
 
     return priorityMode
         ? <TaskMain
+            priorityTitle={priorityTitle}
             priorityColor={priorityColor}
             dragStarHandler={dragStarHandler}
             changeTaskStatus={changeTaskStatus}
@@ -73,6 +83,7 @@ export const Task = (props: TaskPropsType) => {
             title={title}
         />
         : <TaskPriorityMenu
+            priorityTitle={priorityTitle}
             priorityColor={priorityColor}
             priority={priority}
             changePriorityMode={changePriorityMode}
@@ -84,6 +95,8 @@ export const Task = (props: TaskPropsType) => {
 
 
 export const TaskStyle = styled.div`
+  display: flex;
+  flex-direction: column;
   text-align: center;
   width: 200px;
   min-height: 285px;
@@ -102,10 +115,7 @@ export const PriorityStyle = styled.div<PriorityPropsType>`
   background: ${props => props.background};
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  margin-left: -1px;
-  margin-top: -1px;
-  width: 101%;
-  text-align: center;
+  cursor: pointer;
 `
 
 

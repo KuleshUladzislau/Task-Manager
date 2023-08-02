@@ -46,6 +46,7 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
 
 
     const filteredTasks = filteredTask?.map(el =>
+
         <Task
             key={el.id}
             description={el.description}
@@ -64,6 +65,9 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
         />
     )
 
+    const visibleArrowLeft = !viewTasks && filter === 'all' && page > 1
+    const visibleArrowRight = !viewTasks && filter === 'all' && page < pages
+    const visiblePages = !viewTasks && filter === 'all'
 
 
     return (
@@ -80,13 +84,11 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
                 <FilterButton color={filter === 'done' ? 'orange' : 'white'} onClick={setDone}>completed</FilterButton>
             </ButtonContainer>
             <TaskContainer>
-                {!viewTasks && filter === 'all' && page > 1 &&
-                    <ArrowStyleLeft onClick={() => changePageHandler(page - 1)}/>}
+                {visibleArrowLeft && <ArrowStyleLeft onClick={() => changePageHandler(page - 1)}/>}
                 {!viewTasks ? filteredTasks : <Preloader/>}
-                {!viewTasks && filter === 'all' && page < pages &&
-                    <ArrowStyleRight onClick={() => changePageHandler(page + 1)}/>}
+                {visibleArrowRight && <ArrowStyleRight onClick={() => changePageHandler(page + 1)}/>}
             </TaskContainer>
-            {!viewTasks  && filter === 'all' && <Pages pageSize={pageSize} allPage={pages} currentPage={page}/>}
+            {visiblePages && <Pages pageSize={pageSize} allPage={pages} currentPage={page}/>}
             <Modal title={'Create Task'} active={activeModal} setActive={setActiveModal}>
                 <AddInputForm onClick={addTaskHandler}/>
             </Modal>
@@ -104,7 +106,7 @@ const ButtonContainer = styled.div`
   justify-content: center;
   margin-left: 60px;
   height: 30px;
-  gap: 90px;
+ 
 `
 
 const FilterButton = styled.button`
@@ -125,7 +127,7 @@ const TodoTitle = styled.h2`
   color: white;
 `
 
-const TaskContainer = styled.div`
+export const TaskContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -148,7 +150,7 @@ const TitleContainer = styled.div`
   margin: 0 20px;
 `
 
-const ArrowStyleRight = styled.div`
+export const ArrowStyleRight = styled.div`
   border: solid white;
   border-width: 0 4px 4px 0;
   display: inline-block;
@@ -164,7 +166,7 @@ const ArrowStyleRight = styled.div`
   }
 `;
 
-const ArrowStyleLeft = styled.div`
+export const ArrowStyleLeft = styled.div`
   border: solid white;
   border-width: 0 4px 4px 0;
   display: inline-block;
@@ -182,6 +184,9 @@ const ArrowStyleLeft = styled.div`
 `
 
 const ButtonCreateTask = styled.div`
+  display: flex;
+  align-items: center;
+  width: 200px;
   background: transparent;
   color: white;
   font-weight: 600;

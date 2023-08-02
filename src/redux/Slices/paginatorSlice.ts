@@ -18,7 +18,6 @@ const paginatorSlice = createSlice({
     reducers:{
         setPageSettings(state,action:PayloadAction<PaginatorSliceType>){
             state = action.payload
-            console.log(action.payload)
         },
         changePage(state,action:PayloadAction<{page:number,pageSize:number}>){
             state.page = action.payload.page

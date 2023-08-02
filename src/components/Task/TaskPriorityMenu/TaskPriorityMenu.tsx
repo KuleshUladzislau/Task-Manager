@@ -8,6 +8,7 @@ type TaskPriorityMenuType = {
     changePriority: (value: number) => void
     changePriorityMode: () => void
     priorityColor: string
+    priorityTitle:string
 }
 
 export const TaskPriorityMenu = (props: TaskPriorityMenuType) => {
@@ -16,6 +17,7 @@ export const TaskPriorityMenu = (props: TaskPriorityMenuType) => {
         {
             priority,
             priorityColor,
+            priorityTitle,
             changePriority,
             changePriorityMode
         }
@@ -31,14 +33,14 @@ export const TaskPriorityMenu = (props: TaskPriorityMenuType) => {
 
     return (
         <TaskStyle>
-            <PriorityStyle background={`${priorityColor}`} onClick={changePriorityMode}>priority</PriorityStyle>
-            <ul>
+            <PriorityStyle background={`${priorityColor}`} onClick={changePriorityMode}>{priorityTitle}</PriorityStyle>
+            <UlStyle>
                 <ListStyle onClick={() => changePriority(0)} background={highPriority}>high</ListStyle>
                 <ListStyle onClick={() => changePriority(1)} background={almostHighPriority}>almost high</ListStyle>
                 <ListStyle onClick={() => changePriority(2)} background={MiddlePriority}>middle</ListStyle>
                 <ListStyle onClick={() => changePriority(3)} background={lowPriority}>low</ListStyle>
                 <ListStyle onClick={() => changePriority(4)} background={veryLowPriority}>very low</ListStyle>
-            </ul>
+            </UlStyle>
         </TaskStyle>
     )
 }
@@ -47,8 +49,17 @@ interface ListStyleProps {
 
     background:string
 }
-
+const UlStyle = styled.ul`
+  display: inline-block;
+  padding: 20px;
+`
 const ListStyle = styled.li<ListStyleProps>`
-    background: ${props=>props.background};
+  background: ${props => props.background};
+  list-style-type: none;
+  color:white;
+  font-size: 18px;
+  text-transform: uppercase;
+  cursor: pointer;
+  
 `
 

@@ -6,6 +6,7 @@ import {PriorityStyle, TaskStyle} from "../Task";
 import styled from "styled-components";
 
 export type TaskMainPropsType = {
+    priorityTitle:string
     disabledCompleted: boolean
     changeTaskStatus: () => void
     reorderTask: () => void
@@ -23,11 +24,12 @@ export const TaskMain = (props: TaskMainPropsType) => {
             changeTaskStatus,
             removeTaskHandler,
             changeTaskTitle,
+            priorityTitle,
+            changePriorityMode,
+            dragStarHandler,
+            title,
             disabledCompleted,
             priorityColor,
-            changePriorityMode,
-            title,
-            dragStarHandler
         }
             = props
 
@@ -47,7 +49,7 @@ export const TaskMain = (props: TaskMainPropsType) => {
             onDrop={onDropHandler}
             draggable={true}
         >
-            <PriorityStyle background={`${priorityColor}`} onClick={changePriorityMode}>priority</PriorityStyle>
+            <PriorityStyle background={priorityColor} onClick={changePriorityMode}>{priorityTitle}</PriorityStyle>
             <ButtonWrapper>
                 <Button onClick={removeTaskHandler}>
                     <img src={deleteIcon} alt="x"/>
