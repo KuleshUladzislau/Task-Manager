@@ -9,6 +9,7 @@ import {Preloader} from "../common/Preloader/Preloader";
 import TasksPriority from "../TasksPriority/TasksPriority";
 import deleteIcon from '../../assets/img/delete icon/TodosDelete/cross.png'
 import {Select} from "../common/Select/Select";
+import arrowRight  from  '../../assets/img/arrow/free-icon-arrow-right-5093097.png'
 
 
 export type TodolistPropsType = {
@@ -29,7 +30,6 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
     } = useTodoList(id)
 
     const {
-
         pages,
         page,
         pageSize,
@@ -38,14 +38,9 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
         isFetching,
         viewTasks,
         setCurrentTask,
-        setLow,
-        setMiddle,
-        setHigh,
         setPriority,
         changePageHandler,
         filteredTasks,
-        isError
-
     } = useTasks(id)
 
     const [select,setSelect] = useState<PriorityType>('middle')
@@ -73,14 +68,21 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
             </TitleContainer>
             {isFetching && <Preloader/>}
             <ButtonCreateTask onClick={createTaskHandler}>Add Task</ButtonCreateTask>
+
+
                 <TasksPriority
+                    changePage={changePageHandler}
                     tasks={filteredTasks}
                     priority={priority}
                     setCurrentTask={setCurrentTask}
                     currentTaskId={currentTask}
                     isFetching={isFetching}
-                    pageSize={25}
-                    page={5}/>
+                    pageSize={pageSize}
+                    page={page}
+                    allPage={pages}
+                />
+
+
             {/*    {visibleArrowLeft && <ArrowStyleLeft onClick={() => changePageHandler(page - 1)}/>}*/}
             {/*    {!viewTasks ? filteredTasks : <Preloader/>}*/}
             {/*    {visibleArrowRight && <ArrowStyleRight onClick={() => changePageHandler(page + 1)}/>}*/}

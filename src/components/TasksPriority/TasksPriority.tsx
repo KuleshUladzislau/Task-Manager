@@ -4,6 +4,7 @@ import styled from "styled-components";
 import {Task} from "../Task/Task";
 import {Pages} from "../common/Paginator/Pages";
 import {Priority} from "../Task/hook/useTasks";
+import arrowRight from "../../assets/img/arrow/free-icon-arrow-right-5093097.png";
 
 type TaskType = {
     description: string
@@ -29,6 +30,8 @@ type TasksPriorityType = {
     isFetching: boolean
     pageSize: number
     page: number
+    allPage:number
+    changePage:(page:number)=>void
 }
 export const TasksPriority = (props: TasksPriorityType) => {
 
@@ -36,11 +39,13 @@ export const TasksPriority = (props: TasksPriorityType) => {
         {
             tasks,
             priority,
-            setCurrentTask,
+            allPage,
             isFetching,
             currentTaskId,
             pageSize,
-            page
+            page,
+            setCurrentTask,
+            changePage
         }
             = props
 
@@ -74,9 +79,15 @@ export const TasksPriority = (props: TasksPriorityType) => {
     return (
         <TaskPriorityContainer border={priorityStyle}>
             <TaskContainer>
+
                 {filteredTasks}
+
             </TaskContainer>
-            <Pages pageSize={3} currentPage={1}/>
+            <Pages pageSize={pageSize} currentPage={page} allPage={allPage}/>
+            <div style={{display:'flex',alignItems:'center',marginTop:'30px'}}>
+                <img src={arrowRight} style={{transform:'rotate(180deg)'}} onClick={()=>changePage(page-1)}/>
+                <img src={arrowRight} onClick={()=>changePage(page+1)} />
+            </div>
         </TaskPriorityContainer>
     );
 };

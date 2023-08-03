@@ -8,7 +8,7 @@ type PaginatorSliceType ={
 }
 const initialState:PaginatorSliceType = {
     page:1,
-    pageSize:25,
+    pageSize:10,
     totalCount:0
 }
 

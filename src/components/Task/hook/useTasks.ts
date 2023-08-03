@@ -47,7 +47,8 @@ export const useTasks = (todoId: string) => {
             = useGetTasksQuery(
             {
                 todoId,
-                pageSize
+                pageSize,
+                page
             }
         )
 

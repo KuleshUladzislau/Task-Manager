@@ -5,22 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58f80f03-97c0-446c-92df-9526ffd2d9c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/common/Select/Select.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/Slices/tasksSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dall/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dall/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SideBar/SiteBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SideBar/SideBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/TaskPriorityMenu/TaskPriorityMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/TaskPriorityMenu/TaskPriorityMenu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Task/hook/useTasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/hook/useTasks.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.stories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.stories.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TodoList/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TodoList/Todolist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/EditableSpan/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/EditableSpan/EditableSpan.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/Slices/paginatorSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Slices/paginatorSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,6 +149,7 @@
       <workItem from="1691002385922" duration="2654000" />
       <workItem from="1691047564536" duration="8741000" />
       <workItem from="1691056656432" duration="1943000" />
+      <workItem from="1691062913513" duration="1726000" />
     </task>
     <task id="LOCAL-00001" summary="fixed visible pages">
       <option name="closed" value="true" />
@@ -287,7 +279,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691003749294</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="refactor and added Select">
+      <option name="closed" value="true" />
+      <created>1691062950326</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1691062950326</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,7 +344,8 @@
     <MESSAGE value="added storybook and task stories" />
     <MESSAGE value="add test TasksPriority component" />
     <MESSAGE value="added new Component TaskPriority" />
-    <option name="LAST_COMMIT_MESSAGE" value="added new Component TaskPriority" />
+    <MESSAGE value="refactor and added Select" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor and added Select" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

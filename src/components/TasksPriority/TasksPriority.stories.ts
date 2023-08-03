@@ -28,6 +28,7 @@ const meta = {
         page:1,
         pageSize:5,
         currentTaskId:'',
+        allPage:5,
         setCurrentTask:()=>{}
     }
 } satisfies Meta<typeof TasksPriority>;
