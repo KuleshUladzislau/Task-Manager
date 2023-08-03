@@ -25,10 +25,9 @@ export const TaskPriorityMenu = (props: TaskPriorityMenuType) => {
 
 
     const highPriority = priority === 0 ? 'red' : ''
-    const almostHighPriority = priority === 1 ? 'yellow' : ''
-    const MiddlePriority = priority === 2 ? 'orange' : ''
-    const lowPriority = priority === 3 ? 'violet' : ''
-    const veryLowPriority = priority === 4 ? 'skyBlue' : ''
+    const MiddlePriority = priority === 1 ? 'orange' : ''
+    const lowPriority = priority === 2 ? 'skyBlue' : ''
+
 
 
     return (
@@ -36,10 +35,8 @@ export const TaskPriorityMenu = (props: TaskPriorityMenuType) => {
             <PriorityStyle background={`${priorityColor}`} onClick={changePriorityMode}>{priorityTitle}</PriorityStyle>
             <UlStyle>
                 <ListStyle onClick={() => changePriority(0)} background={highPriority}>high</ListStyle>
-                <ListStyle onClick={() => changePriority(1)} background={almostHighPriority}>almost high</ListStyle>
-                <ListStyle onClick={() => changePriority(2)} background={MiddlePriority}>middle</ListStyle>
-                <ListStyle onClick={() => changePriority(3)} background={lowPriority}>low</ListStyle>
-                <ListStyle onClick={() => changePriority(4)} background={veryLowPriority}>very low</ListStyle>
+                <ListStyle onClick={() => changePriority(1)} background={MiddlePriority}>middle</ListStyle>
+                <ListStyle onClick={() => changePriority(2)} background={lowPriority}>low</ListStyle>
             </UlStyle>
         </TaskStyle>
     )

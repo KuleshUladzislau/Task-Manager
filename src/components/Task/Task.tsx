@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {useTask} from "./hook/useTask";
 import {TaskPriorityMenu} from "./TaskPriorityMenu/TaskPriorityMenu";
 import {TaskMain} from "./TaskMain/TaskMain";
+import {Status} from "./hook/useTasks";
 
 
 export type TaskPropsType = {
@@ -28,6 +29,7 @@ export const Task = (props: TaskPropsType) => {
             todoListId,
             id,
             priority,
+            status,
             ...restProps
 
         }
@@ -35,19 +37,18 @@ export const Task = (props: TaskPropsType) => {
 
     const priorityColor =
         priority === 0 ? 'red'
-            : priority === 1 ? 'yellow'
-                : priority === 2 ? 'orange'
-                    : priority === 3 ? 'violet'
-                        : priority === 4 ? 'skyBlue' : ''
+            : priority === 1 ? 'orange'
+                : priority === 2 ? 'skyBlue' : ''
+
 
 
 
     const priorityTitle =
         priority === 0 ? 'high'
-            : priority === 1 ? 'almost high'
-                : priority === 2 ? 'middle'
-                    : priority === 3 ? 'low'
-                        : priority === 4 ? 'very low' : ''
+            : priority === 1 ? 'middle'
+                : priority === 2 ? 'low' : 'change'
+
+    const statusStyle = status !== Status.Completed ? priorityColor : 'yellowGreen'
 
 
     const {
@@ -72,7 +73,7 @@ export const Task = (props: TaskPropsType) => {
     return priorityMode
         ? <TaskMain
             priorityTitle={priorityTitle}
-            priorityColor={priorityColor}
+            priorityColor={statusStyle}
             dragStarHandler={dragStarHandler}
             changeTaskStatus={changeTaskStatus}
             changeTaskTitle={changeTaskTitle}

@@ -3,6 +3,8 @@ import {useGetTasksQuery} from "../../../Dall/api";
 import {TaskTypeAPI} from "../../../Dall/apiTypes";
 import {useAppDispatch, useAppSelector} from "../../hook/hooks";
 import {changePage, setTotalCount} from "../../../redux/Slices/paginatorSlice";
+import tasksPriority from "../../TasksPriority/TasksPriority";
+import {setTask} from "../../../redux/Slices/tasksSlice";
 
 
 export enum Status {
@@ -10,7 +12,14 @@ export enum Status {
     Completed = 1
 }
 
+export enum Priority {
+    High = 0,
+    Middle = 1,
+    Low = 2
+}
+
 export type FilterType = 'all' | 'active' | 'done'
+export type PriorityType = 'high' | 'middle' | 'low' | 'all'| 'completed'
 export const useTasks = (todoId: string) => {
 
 
@@ -33,18 +42,25 @@ export const useTasks = (todoId: string) => {
             data,
             isFetching,
             isSuccess,
+            isError
         }
-            = useGetTasksQuery({
-            todoId,
-            page,
-            pageSize
-        })
+            = useGetTasksQuery(
+            {
+                todoId,
+                pageSize
+            }
+        )
 
 
     useEffect(() => {
         if (getTotalCount) {
             dispatch(setTotalCount({totalCount}))
         }
+
+        if (data) {
+            dispatch(setTask({todoId, tasks: data.items}))
+        }
+
         if (!isFetching) {
             const id = +setTimeout(() => {
                 setViewTask(false)
@@ -66,41 +82,54 @@ export const useTasks = (todoId: string) => {
     }
 
 
-    const [filter, setFilter] = useState<FilterType>('all')
-    const setAll = () => setFilter('all')
-    const setActive = () => setFilter('active')
-    const setDone = () => setFilter('done')
+    const setHigh = () => setPriority('high')
+    const setMiddle = () => setPriority('middle')
+    const setLow = () => setPriority('low')
+    const setAll = () => setPriority('all')
 
 
-    const taskFilter = (filter: FilterType, task: TaskTypeAPI[] | undefined) => {
-        switch (filter) {
-            case "active":
-                return task?.filter(t => t.status === Status.New)
-            case "done":
-                return task?.filter(t => t.status === Status.Completed)
+    const [priority, setPriority] = useState<PriorityType>('all')
+    const priorityFilter = (priority: PriorityType, task: TaskTypeAPI[] | undefined) => {
+        switch (priority) {
+            case "high": {
+                return task?.filter(task => task.priority === Priority.High)
+            }
+            case "middle": {
+                return task?.filter(task => task.priority === Priority.Middle)
+            }
+            case "low": {
+                return task?.filter(task => task.priority === Priority.Low)
+            }
+            case 'completed': {
+                return task?.filter(task=>task.status !== Status.New)
+            }
             default:
                 return task
         }
 
     }
-    const filteredTask = taskFilter(filter, tasks)
+
+    const filteredTasks = priorityFilter(priority, tasks)
 
 
     return {
-        filteredTask,
+        filteredTasks,
         totalCount,
         page,
         pageSize,
         pages,
-        filter,
+        priority,
         currentTask,
         isFetching,
         viewTasks,
         isSuccess,
+        isError,
+        setPriority,
+        setHigh,
+        setLow,
+        setMiddle,
         setCurrentTask,
         changePageHandler,
-        setAll,
-        setActive,
-        setDone
+
     }
 }

@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import {EditableSpan} from "../common/EditableSpan/EditableSpan";
 import {useTodoList} from "./hook/useTodoList";
 import styled from "styled-components";
 import {AddInputForm} from "../common/AddInputForm/AddInputForm";
 import {Modal} from "../common/Modal/Modal";
-import {useTasks} from "../Task/hook/useTasks";
-import {Task} from "../Task/Task";
-import {Pages} from "../common/Paginator/Pages";
-import todoDeleteIcon from '../../assets/img/delete icon/TodosDelete/cross.png'
+import {PriorityType, useTasks} from "../Task/hook/useTasks";
 import {Preloader} from "../common/Preloader/Preloader";
+import TasksPriority from "../TasksPriority/TasksPriority";
+import deleteIcon from '../../assets/img/delete icon/TodosDelete/cross.png'
+import {Select} from "../common/Select/Select";
 
 
 export type TodolistPropsType = {
@@ -29,66 +29,66 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
     } = useTodoList(id)
 
     const {
-        filteredTask,
+
         pages,
         page,
         pageSize,
-        filter,
+        priority,
         currentTask,
         isFetching,
         viewTasks,
         setCurrentTask,
+        setLow,
+        setMiddle,
+        setHigh,
+        setPriority,
         changePageHandler,
-        setAll,
-        setActive,
-        setDone
+        filteredTasks,
+        isError
+
     } = useTasks(id)
 
+    const [select,setSelect] = useState<PriorityType>('middle')
+    const onChangeHandler = (value:string)=>{
 
-    const filteredTasks = filteredTask?.map(el =>
+        setPriority(value as PriorityType)
+    }
 
-        <Task
-            key={el.id}
-            description={el.description}
-            title={el.title}
-            status={el.status}
-            priority={el.priority}
-            startDate={el.startDate}
-            deadline={el.deadline}
-            id={el.id}
-            todoListId={el.todoListId}
-            order={el.order}
-            addedDate={el.addedDate}
-            currentTask={currentTask}
-            setCurrentTask={setCurrentTask}
-            isFetching={isFetching}
-        />
-    )
+    // const visibleArrowLeft = !viewTasks && filter === 'all' && page > 1
+    // const visibleArrowRight = !viewTasks && filter === 'all' && page < pages
+    // const visiblePages = !viewTasks && filter === 'all'
 
-    const visibleArrowLeft = !viewTasks && filter === 'all' && page > 1
-    const visibleArrowRight = !viewTasks && filter === 'all' && page < pages
-    const visiblePages = !viewTasks && filter === 'all'
-
+    const options:PriorityType[] = ['all',"high",'middle',"low",'completed',]
 
     return (
         <TodolistContainer>
             <TitleContainer>
                 <TodoTitle><EditableSpan title={title} onChange={changeTodoTitle}/></TodoTitle>
-                <img src={todoDeleteIcon} alt="" onClick={removeTodoHandler}/>
+
+                <div style={{border:'1px solid red',padding:'10px'}}>
+                    Tasks Settings
+                    <Select onChange={onChangeHandler} options={options}/>
+                </div>
+                <img src={deleteIcon} alt="" onClick={removeTodoHandler}/>
             </TitleContainer>
             {isFetching && <Preloader/>}
             <ButtonCreateTask onClick={createTaskHandler}>Add Task</ButtonCreateTask>
-            <ButtonContainer>
-                <FilterButton color={filter === 'all' ? 'orange' : 'white'} onClick={setAll}>all</FilterButton>
-                <FilterButton color={filter === 'active' ? 'orange' : 'white'} onClick={setActive}>active</FilterButton>
-                <FilterButton color={filter === 'done' ? 'orange' : 'white'} onClick={setDone}>completed</FilterButton>
-            </ButtonContainer>
-            <TaskContainer>
-                {visibleArrowLeft && <ArrowStyleLeft onClick={() => changePageHandler(page - 1)}/>}
-                {!viewTasks ? filteredTasks : <Preloader/>}
-                {visibleArrowRight && <ArrowStyleRight onClick={() => changePageHandler(page + 1)}/>}
-            </TaskContainer>
-            {visiblePages && <Pages pageSize={pageSize} allPage={pages} currentPage={page}/>}
+                <TasksPriority
+                    tasks={filteredTasks}
+                    priority={priority}
+                    setCurrentTask={setCurrentTask}
+                    currentTaskId={currentTask}
+                    isFetching={isFetching}
+                    pageSize={25}
+                    page={5}/>
+            {/*    {visibleArrowLeft && <ArrowStyleLeft onClick={() => changePageHandler(page - 1)}/>}*/}
+            {/*    {!viewTasks ? filteredTasks : <Preloader/>}*/}
+            {/*    {visibleArrowRight && <ArrowStyleRight onClick={() => changePageHandler(page + 1)}/>}*/}
+
+
+
+
+            {/*{visiblePages && <Pages pageSize={25} allPage={0} currentPage={1}/>}*/}
             <Modal title={'Create Task'} active={activeModal} setActive={setActiveModal}>
                 <AddInputForm onClick={addTaskHandler}/>
             </Modal>
@@ -104,20 +104,19 @@ const ButtonContainer = styled.div`
   flex-direction: row;
   align-content: center;
   justify-content: center;
-  margin-left: 60px;
   height: 30px;
   gap: 150px;
- 
+  margin-bottom: 50px;
 `
 
 const FilterButton = styled.button`
+  display: flex;
   border: none;
   background: transparent;
   text-transform: uppercase;
   font-size: 20px;
   color: ${props => props.color};
-  margin-top: 20px;
-
+  
   &:hover {
     color: orange;
   }
@@ -138,8 +137,7 @@ export const TaskContainer = styled.div`
 `
 
 const TodolistContainer = styled.div`
-  min-width: 80vw;
-  margin-left: 10px;
+  margin-left: 30px;
 `
 
 
@@ -149,7 +147,8 @@ const TitleContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 0 20px;
-`
+  border-bottom: 5px solid rgba(203, 199, 199, 0.15);
+  `
 
 export const ArrowStyleRight = styled.div`
   border: solid white;
@@ -187,6 +186,7 @@ export const ArrowStyleLeft = styled.div`
 const ButtonCreateTask = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 50px;
   width: 200px;
   background: transparent;
   color: white;
@@ -194,5 +194,6 @@ const ButtonCreateTask = styled.div`
   font-size: 20px;
   margin-left: 40px;
   cursor: pointer;
+  
 `
 

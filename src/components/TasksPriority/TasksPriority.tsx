@@ -3,12 +3,13 @@ import React, {ReactNode} from 'react';
 import styled from "styled-components";
 import {Task} from "../Task/Task";
 import {Pages} from "../common/Paginator/Pages";
+import {Priority} from "../Task/hook/useTasks";
 
 type TaskType = {
     description: string
     title: string
     status: number
-    priority: any
+    priority: number
     startDate: string
     deadline: string
     id: string
@@ -17,40 +18,61 @@ type TaskType = {
     addedDate: string
 }
 
+
+type PriorityType = 'high' | 'middle' | 'low' | 'all'|'completed'
+
 type TasksPriorityType = {
-    tasks: TaskType[]
+    tasks?: TaskType[]
+    priority: PriorityType
+    setCurrentTask: (value: string) => void
+    currentTaskId: string
+    isFetching: boolean
+    pageSize: number
+    page: number
 }
 export const TasksPriority = (props: TasksPriorityType) => {
 
-    const {tasks} = props
+    const
+        {
+            tasks,
+            priority,
+            setCurrentTask,
+            isFetching,
+            currentTaskId,
+            pageSize,
+            page
+        }
+            = props
 
-    const currentTask = ''
-    const setCurrentTask = () => {
-    }
-    const isFetching = false
 
+    const filteredTasks =
+        tasks?.map(el =>
+            <Task
+                key={el.id}
+                description={el.description}
+                title={el.title}
+                status={el.status}
+                priority={el.priority}
+                startDate={el.startDate}
+                deadline={el.deadline}
+                id={el.id}
+                todoListId={el.todoListId}
+                order={el.order}
+                addedDate={el.addedDate}
+                currentTask={currentTaskId}
+                setCurrentTask={setCurrentTask}
+                isFetching={isFetching}
+            />
+        )
 
-    const filteredTasks = tasks?.map((el: any) =>
-        <Task
-            key={el.id}
-            description={el.description}
-            title={el.title}
-            status={el.status}
-            priority={el.priority}
-            startDate={el.startDate}
-            deadline={el.deadline}
-            id={el.id}
-            todoListId={el.todoListId}
-            order={el.order}
-            addedDate={el.addedDate}
-            currentTask={currentTask}
-            setCurrentTask={setCurrentTask}
-            isFetching={isFetching}
-        />
-    )
+    const priorityStyle =
+        priority === 'high' ? 'red'
+            : priority === 'middle' ? 'orange'
+                : priority === 'low' ? 'skyblue' : ''
+
 
     return (
-        <TaskPriorityContainer>
+        <TaskPriorityContainer border={priorityStyle}>
             <TaskContainer>
                 {filteredTasks}
             </TaskContainer>
@@ -61,24 +83,27 @@ export const TasksPriority = (props: TasksPriorityType) => {
 
 export default TasksPriority;
 
-const TaskPriorityContainer = styled.div`
+interface TaskPriorityStylePros {
+    border: string
+}
+
+const TaskPriorityContainer = styled.div<TaskPriorityStylePros>`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);
-  padding: 20px;
+  width: 75vw;
   border-radius: 20px;
-  border: 5px solid yellow;
-
 `
-
+// 5px solid yellow
 const TaskContainer = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
   border-radius: 20px;
-  padding: 20px;
+
 `
 
 const ArrowStyleRight = styled.div`

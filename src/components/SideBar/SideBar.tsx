@@ -22,9 +22,11 @@ export const SideBar = ({todos}: SideBarPropsType) => {
     const dispatch = useAppDispatch()
     const [activeModal, setActiveModal] = useState(false)
     const [createTodo] = useCreateTodoMutation()
-    const linkOnclickHandler = () =>{
+
+    const linkOnclickHandler = () => {
         dispatch(resetTaskPageSetting())
     }
+
 
 
     const linkTodos = todos && todos.map(t =>
@@ -83,7 +85,7 @@ const SideBarContainer = styled.div`
   flex-direction: column;
   background: rgba(203, 199, 199, 0.15);
   min-height: 80vh;
-  min-width: 15vw;
+  width: 250px;
   padding: 10px;
   border-radius: 10px;
 `

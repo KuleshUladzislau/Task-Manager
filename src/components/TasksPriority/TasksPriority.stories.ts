@@ -12,9 +12,9 @@ const meta = {
     decorators:[ReduxStoreProviderDecorator],
     args:{
         tasks:[
-            {description: '', title: 'Task', status: 0, priority: 1, startDate: '',
+            {description: '', title: 'Task', status: 0, priority: 0, startDate: '',
                 deadline: '', id: '', todoListId: '', order: 0, addedDate: ''  },
-            {description: '', title: 'Task', status: 0, priority: 1, startDate: '',
+            {description: '', title: 'Task', status: 0, priority: 0, startDate: '',
                 deadline: '', id: '', todoListId: '', order: 0, addedDate: ''  },
             {description: '', title: 'Task', status: 0, priority: 1, startDate: '',
                 deadline: '', id: '', todoListId: '', order: 0, addedDate: ''  },
@@ -22,15 +22,19 @@ const meta = {
                 deadline: '', id: '', todoListId: '', order: 0, addedDate: ''  },
             {description: '', title: 'Task', status: 0, priority: 1, startDate: '',
                 deadline: '', id: '', todoListId: '', order: 0, addedDate: ''  }
-        ]
+        ],
+        priority:'high',
+        isFetching:false,
+        page:1,
+        pageSize:5,
+        currentTaskId:'',
+        setCurrentTask:()=>{}
     }
-
-
-
 } satisfies Meta<typeof TasksPriority>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
 
 
 

@@ -43,9 +43,9 @@ export const todosApi = createApi({
             invalidatesTags: ['Todos']
         }),
 
-        getTasks: build.query<ResponseTaskType, {todoId:string,pageSize:number,page:number}>({
-            query: ({todoId,page=1,pageSize=25}) => ({
-                url: `todo-lists/${todoId}/tasks?count=${pageSize}&page=${page}`,
+        getTasks: build.query<ResponseTaskType, {todoId:string,pageSize:number}>({
+            query: ({todoId,pageSize=25}) => ({
+                url: `todo-lists/${todoId}/tasks?count=${pageSize}`,
                 method: 'GET',
                 keepUnusedData: true
             }),

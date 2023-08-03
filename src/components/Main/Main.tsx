@@ -1,4 +1,4 @@
-import {SideBar} from "../SideBar/SiteBar";
+import {SideBar} from "../SideBar/SideBar";
 import {Route, Routes, useNavigate} from "react-router-dom";
 import {Todolist} from "../TodoList/Todolist";
 import React, {useEffect} from "react";

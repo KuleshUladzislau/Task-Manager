@@ -2,13 +2,14 @@ import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import {todosApi} from "../Dall/api";
 import authReducer from './Slices/authSlice';
 import paginatorReducer from './Slices/paginatorSlice';
-
+import tasksReducer from './Slices/tasksSlice'
 
 
 const rootReducer = combineReducers({
     [todosApi.reducerPath]: todosApi.reducer,
     auth: authReducer,
-    pageSettings:paginatorReducer
+    pageSettings:paginatorReducer,
+    tasks:tasksReducer
 })
 
 

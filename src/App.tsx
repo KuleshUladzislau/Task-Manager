@@ -58,7 +58,6 @@ const AppWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  min-width: 100vw;
   background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);
   box-sizing: border-box;
 `
@@ -66,6 +65,7 @@ const AppWrapper = styled.div`
 const AppContainer = styled.div`
   display: flex;
   align-items: center;
+  
 `
 
 
