@@ -49,6 +49,7 @@ export const Task = (props: TaskPropsType) => {
                 : priority === 2 ? 'low' : 'change'
 
     const statusStyle = status !== Status.Completed ? priorityColor : 'yellowGreen'
+    const completedTitle = status === Status.Completed ? `${priorityTitle}/completed` : priorityTitle
 
 
     const {
@@ -72,7 +73,7 @@ export const Task = (props: TaskPropsType) => {
 
     return priorityMode
         ? <TaskMain
-            priorityTitle={priorityTitle}
+            priorityTitle={completedTitle}
             priorityColor={statusStyle}
             dragStarHandler={dragStarHandler}
             changeTaskStatus={changeTaskStatus}
@@ -99,6 +100,7 @@ export const TaskStyle = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  position: relative;
   width: 200px;
   min-height: 285px;
   background: rgba(203, 199, 199, 0.15);

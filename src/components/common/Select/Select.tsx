@@ -31,20 +31,15 @@ const SelectStyle = styled.select`
   font-size: 16px;
   padding: 10px;
   background: transparent;
-  border-top:none;
-  border-left: none;
-  border-right: none;
-  border-bottom:none;
-  color: white;
+  border: none;
   appearance: none;
-
   &:focus {
     outline: none;
-    border-top:none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 3px solid orange;
+    background: transparent;
+    border: none;
 `
 const OptionsStyle = styled.option`
-  background: red;
+    
+    background-color: transparent;
+  
 `

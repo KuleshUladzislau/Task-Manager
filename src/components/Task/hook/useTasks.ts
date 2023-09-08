@@ -3,7 +3,7 @@ import {useGetTasksQuery} from "../../../Dall/api";
 import {TaskTypeAPI} from "../../../Dall/apiTypes";
 import {useAppDispatch, useAppSelector} from "../../hook/hooks";
 import {changePage, setTotalCount} from "../../../redux/Slices/paginatorSlice";
-import tasksPriority from "../../TasksPriority/TasksPriority";
+import tasksPriority from "../../Tasks/Tasks";
 import {setTask} from "../../../redux/Slices/tasksSlice";
 
 
@@ -18,13 +18,12 @@ export enum Priority {
     Low = 2
 }
 
-export type FilterType = 'all' | 'active' | 'done'
-export type PriorityType = 'high' | 'middle' | 'low' | 'all'| 'completed'
+
+export type PriorityType = 'high' | 'middle' | 'low' | 'all' | 'completed'
 export const useTasks = (todoId: string) => {
 
 
     const dispatch = useAppDispatch()
-    const [timerId, setTimerId] = useState<number>()
     const [currentTask, setCurrentTask] = useState<string>('')
     const [viewTasks, setViewTask] = useState(false)
 
@@ -62,13 +61,7 @@ export const useTasks = (todoId: string) => {
             dispatch(setTask({todoId, tasks: data.items}))
         }
 
-        if (!isFetching) {
-            const id = +setTimeout(() => {
-                setViewTask(false)
-            }, 300)
-            setTimerId(id)
-        }
-        return () => clearTimeout(timerId)
+
     }, [data, isFetching])
 
 
@@ -102,7 +95,7 @@ export const useTasks = (todoId: string) => {
                 return task?.filter(task => task.priority === Priority.Low)
             }
             case 'completed': {
-                return task?.filter(task=>task.status !== Status.New)
+                return task?.filter(task => task.status !== Status.New)
             }
             default:
                 return task

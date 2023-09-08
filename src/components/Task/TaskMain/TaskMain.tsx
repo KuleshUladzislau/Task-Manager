@@ -49,7 +49,7 @@ export const TaskMain = (props: TaskMainPropsType) => {
             onDrop={onDropHandler}
             draggable={true}
         >
-            <PriorityStyle background={priorityColor} onClick={changePriorityMode}>{priorityTitle}</PriorityStyle>
+            <PriorityStyle background={priorityColor}   onClick={changePriorityMode}>{priorityTitle}</PriorityStyle>
             <ButtonWrapper>
                 <Button onClick={removeTaskHandler}>
                     <img src={deleteIcon} alt="x"/>

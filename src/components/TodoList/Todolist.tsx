@@ -6,10 +6,9 @@ import {AddInputForm} from "../common/AddInputForm/AddInputForm";
 import {Modal} from "../common/Modal/Modal";
 import {PriorityType, useTasks} from "../Task/hook/useTasks";
 import {Preloader} from "../common/Preloader/Preloader";
-import TasksPriority from "../TasksPriority/TasksPriority";
+import Tasks from "../Tasks/Tasks";
 import deleteIcon from '../../assets/img/delete icon/TodosDelete/cross.png'
 import {Select} from "../common/Select/Select";
-import arrowRight  from  '../../assets/img/arrow/free-icon-arrow-right-5093097.png'
 
 
 export type TodolistPropsType = {
@@ -43,54 +42,38 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
         filteredTasks,
     } = useTasks(id)
 
-    const [select,setSelect] = useState<PriorityType>('middle')
-    const onChangeHandler = (value:string)=>{
+
+    const onChangeHandler = (value: string) => {
 
         setPriority(value as PriorityType)
     }
 
-    // const visibleArrowLeft = !viewTasks && filter === 'all' && page > 1
-    // const visibleArrowRight = !viewTasks && filter === 'all' && page < pages
-    // const visiblePages = !viewTasks && filter === 'all'
 
-    const options:PriorityType[] = ['all',"high",'middle',"low",'completed',]
+    const options: PriorityType[] = ['all', "high", 'middle', "low", 'completed',]
 
     return (
         <TodolistContainer>
             <TitleContainer>
                 <TodoTitle><EditableSpan title={title} onChange={changeTodoTitle}/></TodoTitle>
-
-                <div style={{border:'1px solid red',padding:'10px'}}>
-                    Tasks Settings
+                <TaskSettings>
+                    Tasks Settings :
                     <Select onChange={onChangeHandler} options={options}/>
-                </div>
+                </TaskSettings>
                 <img src={deleteIcon} alt="" onClick={removeTodoHandler}/>
             </TitleContainer>
             {isFetching && <Preloader/>}
             <ButtonCreateTask onClick={createTaskHandler}>Add Task</ButtonCreateTask>
-
-
-                <TasksPriority
-                    changePage={changePageHandler}
-                    tasks={filteredTasks}
-                    priority={priority}
-                    setCurrentTask={setCurrentTask}
-                    currentTaskId={currentTask}
-                    isFetching={isFetching}
-                    pageSize={pageSize}
-                    page={page}
-                    allPage={pages}
-                />
-
-
-            {/*    {visibleArrowLeft && <ArrowStyleLeft onClick={() => changePageHandler(page - 1)}/>}*/}
-            {/*    {!viewTasks ? filteredTasks : <Preloader/>}*/}
-            {/*    {visibleArrowRight && <ArrowStyleRight onClick={() => changePageHandler(page + 1)}/>}*/}
-
-
-
-
-            {/*{visiblePages && <Pages pageSize={25} allPage={0} currentPage={1}/>}*/}
+            <Tasks
+                changePage={changePageHandler}
+                tasks={filteredTasks}
+                priority={priority}
+                setCurrentTask={setCurrentTask}
+                currentTaskId={currentTask}
+                isFetching={isFetching}
+                pageSize={pageSize}
+                page={page}
+                allPage={pages}
+            />
             <Modal title={'Create Task'} active={activeModal} setActive={setActiveModal}>
                 <AddInputForm onClick={addTaskHandler}/>
             </Modal>
@@ -118,7 +101,7 @@ const FilterButton = styled.button`
   text-transform: uppercase;
   font-size: 20px;
   color: ${props => props.color};
-  
+
   &:hover {
     color: orange;
   }
@@ -150,7 +133,7 @@ const TitleContainer = styled.div`
   justify-content: space-between;
   margin: 0 20px;
   border-bottom: 5px solid rgba(203, 199, 199, 0.15);
-  `
+`
 
 export const ArrowStyleRight = styled.div`
   border: solid white;
@@ -195,7 +178,14 @@ const ButtonCreateTask = styled.div`
   font-weight: 600;
   font-size: 20px;
   margin-left: 40px;
+  margin-top: 10px;
   cursor: pointer;
-  
+
+`
+
+const TaskSettings = styled.div`
+  color: orange;
+  font-weight: 500;
+  font-size: 20px;
 `
 

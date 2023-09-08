@@ -3,35 +3,36 @@ import {Route, Routes, useNavigate} from "react-router-dom";
 import {Todolist} from "../TodoList/Todolist";
 import React, {useEffect} from "react";
 import styled from "styled-components";
-import { useGetAllTodosQuery} from "../../Dall/api";
+import {useGetAllTodosQuery} from "../../Dall/api";
 
 
 export const Main = React.memo(() => {
-    const {data,isSuccess} = useGetAllTodosQuery()
+    const {data, isSuccess} = useGetAllTodosQuery()
 
 
     const nagivate = useNavigate()
 
-    useEffect(()=>{
-        if(isSuccess){
+    useEffect(() => {
+        if (isSuccess) {
             data && nagivate(`/todos/${data[0]?.id}`)
         }
-    },[isSuccess])
+    }, [isSuccess])
 
 
+    const todos = data?.map(tod =>
+        <Route key={tod.id} path={`/todos/${tod.id}`}
+               element={<Todolist key={tod.id} title={tod.title} id={tod.id}/>}>
+        </Route>
+    )
 
     return (
         <MainContainer>
             <SiteBarContainer>
-                <SideBar todos={data} />
+                <SideBar todos={data}/>
             </SiteBarContainer>
             <Content>
                 <Routes>
-                    {data && data.map(tod =>
-                        <Route key={tod.id} path={`/todos/${tod.id}`}
-                               element={<Todolist key={tod.id} title={tod.title} id={tod.id} />}>
-                        </Route>
-                    )}
+                    {todos}
                 </Routes>
             </Content>
         </MainContainer>

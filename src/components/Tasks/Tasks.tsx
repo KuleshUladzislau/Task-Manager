@@ -33,7 +33,7 @@ type TasksPriorityType = {
     allPage:number
     changePage:(page:number)=>void
 }
-export const TasksPriority = (props: TasksPriorityType) => {
+export const    Tasks = (props: TasksPriorityType) => {
 
     const
         {
@@ -79,9 +79,7 @@ export const TasksPriority = (props: TasksPriorityType) => {
     return (
         <TaskPriorityContainer border={priorityStyle}>
             <TaskContainer>
-
                 {filteredTasks}
-
             </TaskContainer>
             <Pages pageSize={pageSize} currentPage={page} allPage={allPage}/>
             <div style={{display:'flex',alignItems:'center',marginTop:'30px'}}>
@@ -92,7 +90,7 @@ export const TasksPriority = (props: TasksPriorityType) => {
     );
 };
 
-export default TasksPriority;
+export default Tasks;
 
 interface TaskPriorityStylePros {
     border: string
@@ -103,7 +101,7 @@ const TaskPriorityContainer = styled.div<TaskPriorityStylePros>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 75vw;
+  width: 70vw;
   border-radius: 20px;
 `
 // 5px solid yellow

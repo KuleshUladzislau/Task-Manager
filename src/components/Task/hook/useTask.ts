@@ -51,11 +51,15 @@ export const useTask =
                 .finally(() => setDisabledCompleted(false))
         }
 
-        const changePriority = (priority: number) => updateTask({
-            todoListId,
-            taskId,
-            item: {...taskForUpdate, priority}
-        })
+        const changePriority = ( priority: number) => {
+            updateTask({
+                todoListId,
+                taskId,
+                item: {...taskForUpdate, priority}
+            })
+        }
+
+
         const changePriorityMode = () => setPriorityMode(!priorityMode)
 
 

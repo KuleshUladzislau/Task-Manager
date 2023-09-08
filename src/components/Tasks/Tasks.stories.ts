@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import TasksPriority from './TasksPriority';
+import Tasks from './Tasks';
 import {ReduxStoreProviderDecorator} from "../../stories/decorators/ReduxStoreProviderDecorator";
 import {Task} from "../Task/Task";
 
@@ -8,7 +8,7 @@ import {Task} from "../Task/Task";
 
 const meta = {
     title: 'TasksPriority',
-    component: TasksPriority,
+    component: Tasks,
     decorators:[ReduxStoreProviderDecorator],
     args:{
         tasks:[
@@ -31,7 +31,7 @@ const meta = {
         allPage:5,
         setCurrentTask:()=>{}
     }
-} satisfies Meta<typeof TasksPriority>;
+} satisfies Meta<typeof Tasks>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

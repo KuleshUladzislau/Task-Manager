@@ -6,11 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="58f80f03-97c0-446c-92df-9526ffd2d9c0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dall/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dall/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/TaskMain/TaskMain.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/TaskMain/TaskMain.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/TaskPriorityMenu/TaskPriorityMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/TaskPriorityMenu/TaskPriorityMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/hook/useTask.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/hook/useTask.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Task/hook/useTasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/hook/useTasks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.stories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.stories.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.stories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tasks/Tasks.stories.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TasksPriority/TasksPriority.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tasks/Tasks.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TodoList/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TodoList/Todolist.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Select/Select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Select/Select.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/Slices/paginatorSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Slices/paginatorSlice.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,11 +72,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Incubator\projects\Todos\my-app\src\components\Tasks" />
       <recent name="D:\Incubator\projects\Todos\my-app\src\stories\decorators" />
       <recent name="D:\Incubator\projects\Todos\my-app\src\components" />
       <recent name="D:\Incubator\projects\Todos\my-app\src\redux\Slices" />
       <recent name="D:\Incubator\projects\Todos\my-app\src\components\common\Paginator" />
-      <recent name="D:\Incubator\projects\Todos\my-app\src\components\common" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -149,7 +154,28 @@
       <workItem from="1691002385922" duration="2654000" />
       <workItem from="1691047564536" duration="8741000" />
       <workItem from="1691056656432" duration="1943000" />
-      <workItem from="1691062913513" duration="1726000" />
+      <workItem from="1691062913513" duration="1793000" />
+      <workItem from="1691067315389" duration="49000" />
+      <workItem from="1691072473464" duration="1098000" />
+      <workItem from="1691151826527" duration="6000" />
+      <workItem from="1691158240891" duration="370000" />
+      <workItem from="1691487432420" duration="29000" />
+      <workItem from="1691500959915" duration="677000" />
+      <workItem from="1691766662774" duration="1546000" />
+      <workItem from="1691809970636" duration="3900000" />
+      <workItem from="1691815951089" duration="777000" />
+      <workItem from="1691817848932" duration="10000" />
+      <workItem from="1691820180338" duration="144000" />
+      <workItem from="1692022935689" duration="629000" />
+      <workItem from="1692123458458" duration="599000" />
+      <workItem from="1692359748166" duration="700000" />
+      <workItem from="1692460834661" duration="31000" />
+      <workItem from="1692642758726" duration="39000" />
+      <workItem from="1693324369246" duration="927000" />
+      <workItem from="1693336567114" duration="165000" />
+      <workItem from="1694017031826" duration="27000" />
+      <workItem from="1694020406784" duration="33000" />
+      <workItem from="1694175245807" duration="3411000" />
     </task>
     <task id="LOCAL-00001" summary="fixed visible pages">
       <option name="closed" value="true" />
@@ -287,7 +313,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691062950326</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="added pagination">
+      <option name="closed" value="true" />
+      <created>1691064726357</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1691064726357</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +379,8 @@
     <MESSAGE value="add test TasksPriority component" />
     <MESSAGE value="added new Component TaskPriority" />
     <MESSAGE value="refactor and added Select" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor and added Select" />
+    <MESSAGE value="added pagination" />
+    <option name="LAST_COMMIT_MESSAGE" value="added pagination" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -353,6 +388,10 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/common/Modal/Modal.tsx</url>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/Dall/api.ts</url>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
