@@ -51,8 +51,21 @@ export const Login = () => {
             onSubmit={(values) => onSubmitHandler(values)}>
 
             <Form>
+
                 <FormContainer>
+                    <Description>
+                        <p>To log in get registered
+                            <Link href={'https://social-network.samuraijs.com/'}
+                                  target={'_blank'}> here
+                            </Link>
+                        </p>
+                        <p>or use common test account credentials:</p>
+                        <p>Email: free@samuraijs.com</p>
+                        <p>Password: free</p>
+                    </Description>
+
                     <FormWrapper>
+
                         <Title>LOGIN</Title>
                         <FieldContainer>
                             <Label htmlFor="email">EMAIL</Label>
@@ -90,7 +103,10 @@ export const Login = () => {
     );
 };
 
-
+const Link = styled.a`
+  color: #bd5629;
+  text-decoration: none;
+`
 const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -103,6 +119,7 @@ const FormWrapper = styled.div`
 
 const FormContainer = styled.div`
   display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
   align-items: center;
@@ -169,6 +186,10 @@ const Input = styled(Field)`
 const ErrorMessageStyle = styled.div`
   text-align: center;
   color: red;
+`
+
+const Description = styled.div`
+    text-align: center;
 `
 
 

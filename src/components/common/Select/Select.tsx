@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from 'react';
-import {PriorityType} from "../../Task/hook/useTasks";
 import styled from "styled-components";
+
 
 
 type SelectPropsType = {
@@ -21,6 +21,7 @@ export const Select = (props: SelectPropsType) => {
         )
     })
     return (
+
         <SelectStyle onChange={onChangeHandler} style={{marginTop: '4px'}}>
             {mapedOptions}
         </SelectStyle>
@@ -29,17 +30,25 @@ export const Select = (props: SelectPropsType) => {
 
 const SelectStyle = styled.select`
   font-size: 16px;
-  padding: 10px;
+
+  margin-left: 10px;
   background: transparent;
+  color: white;
+  text-transform: uppercase;
   border: none;
-  appearance: none;
+
   &:focus {
     outline: none;
     background: transparent;
-    border: none;
-`
+  }
+`;
+
 const OptionsStyle = styled.option`
-    
-    background-color: transparent;
-  
-`
+  color: orange;
+  margin-top: 5px;
+  border: none;
+  text-transform: uppercase;
+  padding: 10px;
+
+
+`;

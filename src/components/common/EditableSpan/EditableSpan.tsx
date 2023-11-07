@@ -37,7 +37,8 @@ export const EditableSpan = React.memo((props:EditableSpanPropsType) => {
 
 const SpanStyle = styled.span`
   cursor: pointer;
-  color: orange;
+  color: #fffb00;
+  font-size: 24px;
 `
 
 const InputAddForm = styled.input`

@@ -20,7 +20,7 @@ type TaskType = {
 }
 
 
-type PriorityType = 'high' | 'middle' | 'low' | 'all'|'completed'
+type PriorityType = 'high' | 'middle' | 'low' | 'all' | 'completed'
 
 type TasksPriorityType = {
     tasks?: TaskType[]
@@ -30,10 +30,10 @@ type TasksPriorityType = {
     isFetching: boolean
     pageSize: number
     page: number
-    allPage:number
-    changePage:(page:number)=>void
+    allPage: number
+    changePage: (page: number) => void
 }
-export const    Tasks = (props: TasksPriorityType) => {
+export const Tasks = (props: TasksPriorityType) => {
 
     const
         {
@@ -79,12 +79,17 @@ export const    Tasks = (props: TasksPriorityType) => {
     return (
         <TaskPriorityContainer border={priorityStyle}>
             <TaskContainer>
-                {filteredTasks}
+                {filteredTasks?.length === 0
+                    ?
+                    <CreateTask>Create Task</CreateTask>
+
+                    : filteredTasks}
             </TaskContainer>
             <Pages pageSize={pageSize} currentPage={page} allPage={allPage}/>
-            <div style={{display:'flex',alignItems:'center',marginTop:'30px'}}>
-                <img src={arrowRight} style={{transform:'rotate(180deg)'}} onClick={()=>changePage(page-1)}/>
-                <img src={arrowRight} onClick={()=>changePage(page+1)} />
+            <div style={{display: 'flex', alignItems: 'center', marginTop: '30px'}}>
+                {page > 1 &&
+                    <img src={arrowRight} style={{transform: 'rotate(180deg)'}} onClick={() => changePage(page - 1)}/>}
+                {page < allPage && <img src={arrowRight} onClick={() => changePage(page + 1)}/>}
             </div>
         </TaskPriorityContainer>
     );
@@ -104,7 +109,6 @@ const TaskPriorityContainer = styled.div<TaskPriorityStylePros>`
   width: 70vw;
   border-radius: 20px;
 `
-// 5px solid yellow
 const TaskContainer = styled.div`
   display: flex;
   align-items: center;
@@ -146,4 +150,12 @@ export const ArrowStyleLeft = styled.div`
     transform: rotate(135deg);
 
   }
+`
+
+const CreateTask = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 50vh;
+  width: 100%;
+  border: 1px solid red;
 `

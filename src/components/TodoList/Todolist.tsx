@@ -8,7 +8,7 @@ import {PriorityType, useTasks} from "../Task/hook/useTasks";
 import {Preloader} from "../common/Preloader/Preloader";
 import Tasks from "../Tasks/Tasks";
 import deleteIcon from '../../assets/img/delete icon/TodosDelete/cross.png'
-import {Select} from "../common/Select/Select";
+import {Select} from "antd";
 
 
 export type TodolistPropsType = {
@@ -16,7 +16,7 @@ export type TodolistPropsType = {
     id: string
 }
 
-export const Todolist = React.memo((props: TodolistPropsType) => {
+export const Todolist = (props: TodolistPropsType) => {
     const {title, id} = props
     const [activeModal, setActiveModal] = useState(false)
     const createTaskHandler = () => setActiveModal(true)
@@ -35,7 +35,6 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
         priority,
         currentTask,
         isFetching,
-        viewTasks,
         setCurrentTask,
         setPriority,
         changePageHandler,
@@ -49,7 +48,14 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
     }
 
 
-    const options: PriorityType[] = ['all', "high", 'middle', "low", 'completed',]
+    const options = [
+        {value: 'all', label: 'all'},
+        {value: 'high', label: 'high'},
+        {value: 'middle', label: 'middle'},
+        {value: 'low', label: 'low'},
+        {value: 'completed', label: 'completed'},
+    ]
+
 
     return (
         <TodolistContainer>
@@ -57,7 +63,7 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
                 <TodoTitle><EditableSpan title={title} onChange={changeTodoTitle}/></TodoTitle>
                 <TaskSettings>
                     Tasks Settings :
-                    <Select onChange={onChangeHandler} options={options}/>
+                    <Select options={options} defaultValue={'all'} onChange={onChangeHandler} style={{width:'100px',marginLeft:'10px'}}/>
                 </TaskSettings>
                 <img src={deleteIcon} alt="" onClick={removeTodoHandler}/>
             </TitleContainer>
@@ -81,31 +87,10 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
     )
 
 
-})
+}
 
 
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: center;
-  height: 30px;
-  gap: 150px;
-  margin-bottom: 50px;
-`
 
-const FilterButton = styled.button`
-  display: flex;
-  border: none;
-  background: transparent;
-  text-transform: uppercase;
-  font-size: 20px;
-  color: ${props => props.color};
-
-  &:hover {
-    color: orange;
-  }
-`
 
 const TodoTitle = styled.h2`
   margin: 20px;

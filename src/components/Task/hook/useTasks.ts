@@ -3,8 +3,8 @@ import {useGetTasksQuery} from "../../../Dall/api";
 import {TaskTypeAPI} from "../../../Dall/apiTypes";
 import {useAppDispatch, useAppSelector} from "../../hook/hooks";
 import {changePage, setTotalCount} from "../../../redux/Slices/paginatorSlice";
-import tasksPriority from "../../Tasks/Tasks";
 import {setTask} from "../../../redux/Slices/tasksSlice";
+import {skipToken} from "@reduxjs/toolkit/query";
 
 
 export enum Status {
@@ -23,9 +23,9 @@ export type PriorityType = 'high' | 'middle' | 'low' | 'all' | 'completed'
 export const useTasks = (todoId: string) => {
 
 
+
     const dispatch = useAppDispatch()
     const [currentTask, setCurrentTask] = useState<string>('')
-    const [viewTasks, setViewTask] = useState(false)
 
     const
         {
@@ -40,16 +40,17 @@ export const useTasks = (todoId: string) => {
         {
             data,
             isFetching,
-            isSuccess,
-            isError
+
         }
             = useGetTasksQuery(
             {
                 todoId,
                 pageSize,
-                page
-            }
+                page,
+            },
+
         )
+
 
 
     useEffect(() => {
@@ -71,15 +72,10 @@ export const useTasks = (todoId: string) => {
 
 
     const changePageHandler = (page: number) => {
-        setViewTask(true)
         dispatch(changePage({page, pageSize}));
     }
 
 
-    const setHigh = () => setPriority('high')
-    const setMiddle = () => setPriority('middle')
-    const setLow = () => setPriority('low')
-    const setAll = () => setPriority('all')
 
 
     const [priority, setPriority] = useState<PriorityType>('all')
@@ -115,13 +111,7 @@ export const useTasks = (todoId: string) => {
         priority,
         currentTask,
         isFetching,
-        viewTasks,
-        isSuccess,
-        isError,
         setPriority,
-        setHigh,
-        setLow,
-        setMiddle,
         setCurrentTask,
         changePageHandler,
 

@@ -1,17 +1,22 @@
-import { createApi} from '@reduxjs/toolkit/query/react'
+import {createApi, skipToken} from '@reduxjs/toolkit/query/react'
 import {GetTodo, Me, ResponseTaskType, ResponseType, TaskChange} from "./apiTypes";
 import {axiosBaseQuery} from "./apiBaseQuery";
 
 
 export const todosApi = createApi({
     reducerPath: 'todosApi',
-    tagTypes: ['Todos', 'User'],
+    tagTypes: ['Todos', 'User','Tasks'],
     baseQuery: axiosBaseQuery({
         baseUrl: 'https://social-network.samuraijs.com/api/1.1/',
     }),
     endpoints: (build) => ({
         getAllTodos: build.query<GetTodo[], void>({
-            query: () => ({url: 'todo-lists', method: 'get'}),
+            query: () => (
+                {
+                    url: 'todo-lists',
+                    method: 'get',
+
+                }),
             providesTags: ['Todos']
         }),
 
@@ -31,7 +36,9 @@ export const todosApi = createApi({
                 method: 'DELETE',
 
             }),
-            invalidatesTags: ['Todos']
+
+            invalidatesTags: ['Todos'],
+
         }),
 
         changeTodoTitle: build.mutation<ResponseType, { todolistId: string, title: string }>({
@@ -41,15 +48,19 @@ export const todosApi = createApi({
                 data: {title}
             }),
             invalidatesTags: ['Todos']
+
         }),
 
         getTasks: build.query<ResponseTaskType, {todoId:string,pageSize:number,page:number}>({
             query: ({todoId,pageSize,page}) => ({
                 url: `todo-lists/${todoId}/tasks?count=${pageSize}&page=${page}`,
                 method: 'GET',
-                keepUnusedData: true
+                keepUnusedData: true,
+
             }),
-            providesTags: ['Todos']
+            providesTags: ['Todos'],
+
+
         }),
 
         createTask: build.mutation<ResponseType, { todolistId: string, title: string }>({
@@ -144,7 +155,8 @@ export const {
     useLogoutMutation,
     useMeQuery  ,
     useGetCaptchaQuery,
-    useReorderTaskMutation
+    useReorderTaskMutation,
+    useLazyGetTasksQuery
 } = todosApi
 
 

@@ -13,10 +13,10 @@ export const Main = React.memo(() => {
     const nagivate = useNavigate()
 
     useEffect(() => {
-        if (isSuccess) {
+        if (data) {
             data && nagivate(`/todos/${data[0]?.id}`)
         }
-    }, [isSuccess])
+    }, [data])
 
 
     const todos = data?.map(tod =>

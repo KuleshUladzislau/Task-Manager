@@ -53,7 +53,6 @@ export const TaskPriorityMenu = (props: TaskPriorityMenuType) => {
 }
 
 interface ListStyleProps {
-
     background: string
 }
 
