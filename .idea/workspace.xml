@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58f80f03-97c0-446c-92df-9526ffd2d9c0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dall/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dall/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/TaskMain/TaskMain.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/TaskMain/TaskMain.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/TaskPriorityMenu/TaskPriorityMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/TaskPriorityMenu/TaskPriorityMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/hook/useTasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/hook/useTasks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Tasks/Tasks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tasks/Tasks.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TodoList/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TodoList/Todolist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/EditableSpan/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/EditableSpan/EditableSpan.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Select/Select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Select/Select.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vercel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +186,7 @@
       <workItem from="1695053462369" duration="660000" />
       <workItem from="1695056807215" duration="11000" />
       <workItem from="1695407370459" duration="16000" />
-      <workItem from="1699340783578" duration="32000" />
+      <workItem from="1699340783578" duration="350000" />
     </task>
     <task id="LOCAL-00001" summary="fixed visible pages">
       <option name="closed" value="true" />
