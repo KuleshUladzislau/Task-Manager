@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Task-Manager/static/css/main.e6c13ad2.css",
-    "main.js": "/Task-Manager/static/js/main.224780a7.js",
+    "main.js": "/Task-Manager/static/js/main.d4d00926.js",
     "static/media/Ellipsis-3.4s-200px.svg": "/Task-Manager/static/media/Ellipsis-3.4s-200px.72615eecc1aac68332ea1f88fc3dcbb9.svg",
     "index.html": "/Task-Manager/index.html",
     "main.e6c13ad2.css.map": "/Task-Manager/static/css/main.e6c13ad2.css.map",
-    "main.224780a7.js.map": "/Task-Manager/static/js/main.224780a7.js.map"
+    "main.d4d00926.js.map": "/Task-Manager/static/js/main.d4d00926.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.224780a7.js"
+    "static/js/main.d4d00926.js"
   ]
 }
