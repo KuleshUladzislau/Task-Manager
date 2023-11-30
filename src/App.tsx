@@ -1,12 +1,11 @@
 import React, {useEffect} from 'react';
-import './App.module.css';
 import {Login} from "./components/Login/Login";
 import {Route, Routes, useNavigate} from "react-router-dom";
 import styled from "styled-components";
 import {Main} from "./components/Main/Main";
 import {Header} from "./components/Header/Header";
-import { useMeQuery} from "./Dall/api";
-import {ResultCode} from "./Dall/apiTypes";
+import { useMeQuery} from "./services/api";
+import {ResultCode} from "./services/apiTypes";
 import {useAppDispatch, useAppSelector} from "./components/hook/hooks";
 import {setAuthorized} from "./redux/Slices/authSlice";
 import {Preloader} from "./components/common/Preloader/Preloader";
@@ -65,6 +64,10 @@ const AppWrapper = styled.div`
 const AppContainer = styled.div`
   display: flex;
   align-items: center;
+  
+  @media(max-width: 900px){
+    display: block;
+  }
   
 `
 

@@ -39,6 +39,10 @@ const SpanStyle = styled.span`
   cursor: pointer;
   color: #fffb00;
   font-size: 24px;
+  
+  @media(max-width: 900px){
+    font-size: 20px;
+  }
 `
 
 const InputAddForm = styled.input`

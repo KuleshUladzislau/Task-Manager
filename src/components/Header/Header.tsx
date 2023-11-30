@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from "styled-components";
-import { useLogoutMutation, useMeQuery} from "../../Dall/api";
+import {useLogoutMutation, useMeQuery} from "../../services/api";
 import {useNavigate} from "react-router-dom";
 import {useAppDispatch} from "../hook/hooks";
 import {setAuthorized} from "../../redux/Slices/authSlice";
-
-
 
 
 export const Header = () => {
@@ -16,14 +14,11 @@ export const Header = () => {
     const navigate = useNavigate()
 
 
-
-
     const onClick = () => {
         logout()
-        dispatch(setAuthorized({isAuth:false}))
+        dispatch(setAuthorized({isAuth: false}))
         navigate('/login')
     }
-
 
 
     return (
@@ -37,12 +32,20 @@ export const Header = () => {
 
 const ContainerHeader = styled.div`
   display: flex;
+
   justify-content: space-between;
   background: rgba(203, 199, 199, 0.15);
   align-items: center;
   border-radius: 10px;
   width: 97vw;
   margin: 10px 0 10px 10px;
+
+  @media (max-width: 900px) {
+
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+  }
 
 `
 

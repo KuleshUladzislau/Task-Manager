@@ -1,4 +1,4 @@
-import {useRemoveTaskMutation, useReorderTaskMutation, useUpdateTaskMutation} from "../../../Dall/api";
+import {useRemoveTaskMutation, useReorderTaskMutation, useUpdateTaskMutation} from "../../../services/api";
 import {useState} from "react";
 import {Status} from "./useTasks";
 import {TaskPropsType} from "../Task";

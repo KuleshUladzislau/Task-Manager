@@ -86,11 +86,11 @@ export const Tasks = (props: TasksPriorityType) => {
                     : filteredTasks}
             </TaskContainer>
             <Pages pageSize={pageSize} currentPage={page} allPage={allPage}/>
-            <div style={{display: 'flex', alignItems: 'center', marginTop: '30px'}}>
+            <Pagination >
                 {page > 1 &&
-                    <img src={arrowRight} style={{transform: 'rotate(180deg)'}} onClick={() => changePage(page - 1)}/>}
+                    <ArrowStyle src={arrowRight}  onClick={() => changePage(page - 1)}/>}
                 {page < allPage && <img src={arrowRight} onClick={() => changePage(page + 1)}/>}
-            </div>
+            </Pagination>
         </TaskPriorityContainer>
     );
 };
@@ -119,37 +119,10 @@ const TaskContainer = styled.div`
 
 `
 
-const ArrowStyleRight = styled.div`
-  border: solid white;
-  border-width: 0 4px 4px 0;
-  display: inline-block;
-  padding: 10px;
-  transform: rotate(-45deg);
 
-  &:hover {
-    border: solid #e7b263;
-    border-width: 0 4px 4px 0;
-    display: inline-block;
-    padding: 10px;
-    transform: rotate(-45deg);
-  }
-`;
 
-export const ArrowStyleLeft = styled.div`
-  border: solid white;
-  border-width: 0 4px 4px 0;
-  display: inline-block;
-  padding: 10px;
-  transform: rotate(135deg);
-
-  &:hover {
-    border: solid #e7b263;
-    border-width: 0 4px 4px 0;
-    display: inline-block;
-    padding: 10px;
-    transform: rotate(135deg);
-
-  }
+export const ArrowStyle = styled.img`
+    transform: rotate(180deg);
 `
 
 const CreateTask = styled.div`
@@ -157,5 +130,10 @@ const CreateTask = styled.div`
   justify-content: center;
   height: 50vh;
   width: 100%;
-  border: 1px solid red;
+ 
+`
+const Pagination = styled.div`
+  display: flex; 
+  align-items: center;
+  margin-top: 30px;
 `

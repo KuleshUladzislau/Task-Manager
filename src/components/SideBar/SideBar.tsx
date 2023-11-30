@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import styled from "styled-components";
 import {AddInputForm} from "../common/AddInputForm/AddInputForm";
 import {Modal} from "../common/Modal/Modal";
-import {useCreateTodoMutation} from "../../Dall/api";
+import {useCreateTodoMutation} from "../../services/api";
 import {useAppDispatch} from "../hook/hooks";
 import {resetTaskPageSetting} from "../../redux/Slices/paginatorSlice";
 
@@ -77,6 +77,8 @@ const SideBarTitleContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
+
+  
 `
 
 
@@ -88,6 +90,17 @@ const SideBarContainer = styled.div`
   width: 250px;
   padding: 10px;
   border-radius: 10px;
+
+  @media (max-width: 900px) {
+    display: block;
+    position: fixed;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);
+    
+    
+  }
 `
 const Title = styled.h2`
   color: white;

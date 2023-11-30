@@ -4,7 +4,7 @@ import {EditableSpan} from "../../common/EditableSpan/EditableSpan";
 import {UniversalButton} from "../../common/UniversalButton/UniversalButton";
 import {PriorityStyle, TaskStyle} from "../Task";
 import styled from "styled-components";
-import {useTask} from "../hook/useTask";
+
 
 export type TaskMainPropsType = {
     priorityTitle:string

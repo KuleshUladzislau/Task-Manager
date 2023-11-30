@@ -45,7 +45,7 @@ const ModalWrapper = styled.div<ModalStyleProps>`
   position: fixed;
   top:0;
   left:0;
-  z-index: 999;
+  z-index: 998 ;
   transform:${props=>props.transform} ;
 `
 
@@ -59,6 +59,7 @@ const ModalContent = styled.div`
   padding: 20px;
   border-radius: 12px;
   background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);
+  z-index: 999;
 `
 
 const ModalTitle = styled.h2`

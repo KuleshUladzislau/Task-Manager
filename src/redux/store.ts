@@ -1,5 +1,5 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import {todosApi} from "../Dall/api";
+import {todosApi} from "../services/api";
 import authReducer from './Slices/authSlice';
 import paginatorReducer from './Slices/paginatorSlice';
 import tasksReducer from './Slices/tasksSlice'

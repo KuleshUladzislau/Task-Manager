@@ -5,7 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58f80f03-97c0-446c-92df-9526ffd2d9c0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dall/api.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dall/apiBaseQuery.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dall/apiTypes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/preloader/Ellipsis-3.4s-200px.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/preloader/Ellipsis-3.4s-200px.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SideBar/SideBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SideBar/SideBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.stories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.stories.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/TaskMain/TaskMain.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/TaskMain/TaskMain.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/TaskPriorityMenu/TaskPriorityMenu.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/TaskPriorityMenu/TaskPriorityMenu.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/TaskPriorityMenu/TaskPriorityMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/TaskPriorityMenu/TaskPriorityMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/hook/useTask.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/hook/useTask.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/hook/useTasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/hook/useTasks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Tasks/Tasks.stories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tasks/Tasks.stories.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Tasks/Tasks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tasks/Tasks.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TodoList/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TodoList/Todolist.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TodoList/hook/useTodoList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TodoList/hook/useTodoList.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/AddInputForm/AddInputForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/AddInputForm/AddInputForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/EditableSpan/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/EditableSpan/EditableSpan.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Modal/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Modal/Modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Paginator/Pages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Paginator/Pages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Preloader/Preloader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Preloader/Preloader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Select/Select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Select/Select.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/UniversalButton/UniversalButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/UniversalButton/UniversalButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/hook/hooks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hook/hooks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/react-app-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/react-app-env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/Slices/authSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Slices/authSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/Slices/paginatorSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Slices/paginatorSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/Slices/tasksSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Slices/tasksSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reportWebVitals.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/setupTests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupTests.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/decorators/ReduxStoreProviderDecorator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/decorators/ReduxStoreProviderDecorator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/withLoaderTest.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/withLoaderTest.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +96,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\Incubator\\2\\Task-Manager\\node_modules\\typescript\\lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;ts.rename.search.for.dynamic.occurrences&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -188,6 +230,9 @@
       <workItem from="1700218236258" duration="947000" />
       <workItem from="1700219420269" duration="1922000" />
       <workItem from="1700319784080" duration="82000" />
+      <workItem from="1701342020942" duration="9000" />
+      <workItem from="1701342061441" duration="85000" />
+      <workItem from="1701342155231" duration="40000" />
     </task>
     <task id="LOCAL-00001" summary="fixed visible pages">
       <option name="closed" value="true" />

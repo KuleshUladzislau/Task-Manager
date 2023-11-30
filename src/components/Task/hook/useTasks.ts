@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import {useGetTasksQuery} from "../../../Dall/api";
-import {TaskTypeAPI} from "../../../Dall/apiTypes";
+import {useGetTasksQuery} from "../../../services/api";
+import {TaskTypeAPI} from "../../../services/apiTypes";
 import {useAppDispatch, useAppSelector} from "../../hook/hooks";
 import {changePage, setTotalCount} from "../../../redux/Slices/paginatorSlice";
 import {setTask} from "../../../redux/Slices/tasksSlice";

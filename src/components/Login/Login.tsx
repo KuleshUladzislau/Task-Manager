@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
-import {useGetCaptchaQuery, useLoginMutation} from "../../Dall/api";
-import {ResultCode} from "../../Dall/apiTypes";
+import {useGetCaptchaQuery, useLoginMutation} from "../../services/api";
+import {ResultCode} from "../../services/apiTypes";
 import {Preloader} from "../common/Preloader/Preloader";
 
 
@@ -35,7 +35,7 @@ export const Login = () => {
 
     const validationLogin = Yup.object().shape({
         email: Yup.string().email().required('Required'),
-        password: Yup.string().min(6)
+        password: Yup.string().min(3)
     })
 
     const onSubmitHandler = (values:ValuesType) => {
@@ -46,30 +46,19 @@ export const Login = () => {
 
     return (
         <Formik
-            initialValues={{email: '', password: '', rememberMe: false, captcha: ''}}
+            initialValues={{email: 'kulesh_uladzislau@mail.ru', password: 'ParadoX97', rememberMe: false, captcha: ''}}
             validationSchema={validationLogin}
             onSubmit={(values) => onSubmitHandler(values)}>
 
             <Form>
 
                 <FormContainer>
-                    <Description>
-                        <p>To log in get registered
-                            <Link href={'https://social-network.samuraijs.com/'}
-                                  target={'_blank'}> here
-                            </Link>
-                        </p>
-                        <p>or use common test account credentials:</p>
-                        <p>Email: free@samuraijs.com</p>
-                        <p>Password: free</p>
-                    </Description>
-
                     <FormWrapper>
 
                         <Title>LOGIN</Title>
                         <FieldContainer>
                             <Label htmlFor="email">EMAIL</Label>
-                            <Input id="email" name="email" type='email' placeholder="Email"/>
+                            <Input id="email" name="email" type='email' placeholder="Email" />
                             <ErrorMessage name="email"/>
                         </FieldContainer>
 

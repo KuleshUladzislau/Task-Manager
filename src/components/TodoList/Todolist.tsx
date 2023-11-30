@@ -65,7 +65,7 @@ export const Todolist = (props: TodolistPropsType) => {
                     Tasks Settings :
                     <Select options={options} defaultValue={'all'} onChange={onChangeHandler} style={{width:'100px',marginLeft:'10px'}}/>
                 </TaskSettings>
-                <img src={deleteIcon} alt="" onClick={removeTodoHandler}/>
+                <DeleteImg src={deleteIcon} alt="" onClick={removeTodoHandler}/>
             </TitleContainer>
             {isFetching && <Preloader/>}
             <ButtonCreateTask onClick={createTaskHandler}>Add Task</ButtonCreateTask>
@@ -97,17 +97,14 @@ const TodoTitle = styled.h2`
   color: white;
 `
 
-export const TaskContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
-`
+
 
 const TodolistContainer = styled.div`
   margin-left: 30px;
+  @media(max-width:900px){
+    margin-left: 0;
+    padding-top: 20px;
+  }
 `
 
 
@@ -118,40 +115,13 @@ const TitleContainer = styled.div`
   justify-content: space-between;
   margin: 0 20px;
   border-bottom: 5px solid rgba(203, 199, 199, 0.15);
-`
-
-export const ArrowStyleRight = styled.div`
-  border: solid white;
-  border-width: 0 4px 4px 0;
-  display: inline-block;
-  padding: 10px;
-  transform: rotate(-45deg);
-
-  &:hover {
-    border: solid #e7b263;
-    border-width: 0 4px 4px 0;
-    display: inline-block;
-    padding: 10px;
-    transform: rotate(-45deg);
-  }
-`;
-
-export const ArrowStyleLeft = styled.div`
-  border: solid white;
-  border-width: 0 4px 4px 0;
-  display: inline-block;
-  padding: 10px;
-  transform: rotate(135deg);
-
-  &:hover {
-    border: solid #e7b263;
-    border-width: 0 4px 4px 0;
-    display: inline-block;
-    padding: 10px;
-    transform: rotate(135deg);
-
+  @media (max-width: 900px){
+    display: flex;
+    flex-direction: column-reverse;
   }
 `
+
+
 
 const ButtonCreateTask = styled.div`
   display: flex;
@@ -172,5 +142,19 @@ const TaskSettings = styled.div`
   color: orange;
   font-weight: 500;
   font-size: 20px;
+  @media(max-width: 900px){
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 15px;
+  }
 `
 
+const DeleteImg = styled.img `
+    
+    @media(max-width: 900px){
+      position: absolute;
+      top: 95px;
+      right: 20px;
+    }
+`
